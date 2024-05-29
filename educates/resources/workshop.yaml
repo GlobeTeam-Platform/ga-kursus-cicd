@@ -1,0 +1,49 @@
+apiVersion: training.educates.dev/v1beta1
+kind: Workshop
+metadata:
+  name: "kubernetes"
+spec:
+  title: "Kubernetes fundamentals"
+  description: "Learn the fundamentals of Kubernetes"
+  url: https://github.com/GlobeTeam-Platform/ga-kursus-cicd
+  publish:
+    image: "$(image_repository)/ga-kursus-cicd-files:$(workshop_version)"
+  workshop:
+    files:
+    - image:
+        url: $(image_repository)/ga-kursus-cicd-files:$(workshop_version)
+      includePaths:
+      - /workshop/**
+      - /exercises/**
+      - /templates/**
+      - /README.md
+  session:
+    namespaces:
+      budget: high
+    applications:
+      slides:
+        enabled: true
+      terminal:
+        enabled: true
+        #layout: split
+      editor:
+        enabled: true
+      console:
+        enabled: false
+      docker:
+        enabled: true
+      registry:
+        enabled: true
+      vcluster:
+        enabled: true
+    #ingresses:
+    #- name: application
+    #  protocol: http
+      #host: nginx-deployment.$(session_namespace).svc.$(cluster_domain)
+    #  port: 8080
+    dashboards:
+    - name: ArgoCD
+      url: "$(ingress_protocol)://argocd-$(session_name).$(ingress_domain)/"
+    #- name: App
+    #  url: "$(ingress_protocol)://application-$(session_name).$(ingress_domain)/"
+
