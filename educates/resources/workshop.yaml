@@ -52,6 +52,22 @@ spec:
                 helper = store
             .git-credentials: |
               $(git_protocol)://$(git_username):$(git_password)@$(git_host)
+        - apiVersion: v1
+          kind: Secret
+          metadata:
+            name: docker-secret
+            annotations:
+              tekton.dev/docker-0: $(REGISTRY_HOST)
+          type: kubernetes.io/basic-auth
+          stringData:
+              username: $(REGISTRY_USERNAME)
+              password: $(REGISTRY_PASSWORD)
+        - apiVersion: v1
+          kind: ServiceAccount
+          metadata:
+            name: docker-login
+          secrets:
+            - name: docker-secret
     #ingresses:
     #- name: application
     #  protocol: http

@@ -3,10 +3,10 @@
 apiVersion: tekton.dev/v1beta1
 kind: PipelineRun
 metadata:
-  generateName: clone-build-push-run-
+  generateName: clone-read-run-
 spec:
   pipelineRef:
-    name: clone-build-push
+    name: clone-read
   podTemplate:
     securityContext:
       fsGroup: 65532
@@ -19,14 +19,9 @@ spec:
         resources:
           requests:
             storage: 1Gi
-  - name: docker-credentials
-    secret:
-      secretName: docker-secret
   - name: git-credentials
     secret:
       secretName: git-credentials
   params:
   - name: repo-url
     value: #@ "http://{GIT_HOST}/myapp.git".format(**data.values)
-  - name: image-reference
-    value: "ttl.sh/educates:1h"

@@ -11,7 +11,7 @@ ytt -f templates \
   -v REGISTRY_USERNAME=$REGISTRY_USERNAME \
   --output-files exercises
 
-# Move files to cleanup
+# Move files to cleanup env
 mv /home/eduk8s/exercises/tektonui.yaml /home/eduk8s/install/tektonui.yaml
 mv /home/eduk8s/exercises/pipelinerun.yaml /home/eduk8s/exercises/tekton/pipelinerun.yaml
 
@@ -26,5 +26,6 @@ kubectl wait --for=condition=Available deployment/tekton-events-controller -n te
 kubectl wait --for=condition=Available deployment/tekton-pipelines-webhook -n tekton-pipelines
 kubectl apply -f /home/eduk8s/install/tektonui.yaml
 kubectl apply -f /home/eduk8s/install/git-clone.yaml
+kubectl apply -f /home/eduk8s/install/kaniko.yaml
 kubectl apply -f /home/eduk8s/exercises/tekton/pipeline.yaml
 
