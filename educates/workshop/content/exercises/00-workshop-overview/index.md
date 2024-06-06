@@ -1,16 +1,14 @@
 ---
 title: "Workshop Overview"
 ---
-Welcome to Kubernetes fundamentals
+Welcome to CICD fundamentals
 
 In this workshop you will learn about
 
-- What is Kubernetes
-- How to connect
-- How to deploy apps
-- How to update apps
-- How to scale apps
-- Tools to use
-- And others
+- What is Continius Integrations
+- What is Continius Delivery
+- How do you use it ?
+- How to automate building applications and delivering them to Kubernetes
 
-![k8s](k8s.png)
+
+![CICD](cicd.svg)

@@ -1,10 +1,10 @@
 apiVersion: training.educates.dev/v1beta1
 kind: Workshop
 metadata:
-  name: "kubernetes"
+  name: "cicd"
 spec:
-  title: "Kubernetes fundamentals"
-  description: "Learn the fundamentals of Kubernetes"
+  title: "CICD fundamentals"
+  description: "Learn the fundamentals of CICD"
   url: https://github.com/GlobeTeam-Platform/ga-kursus-cicd
   publish:
     image: "$(image_repository)/ga-kursus-cicd-files:$(workshop_version)"
@@ -16,6 +16,7 @@ spec:
       - /workshop/**
       - /exercises/**
       - /templates/**
+      - /binary/**
       - /README.md
   session:
     namespaces:
@@ -34,6 +35,8 @@ spec:
         enabled: true
       registry:
         enabled: true
+      git:
+        enabled: true
       vcluster:
         enabled: true
     #ingresses:
@@ -44,6 +47,9 @@ spec:
     dashboards:
     - name: ArgoCD
       url: "$(ingress_protocol)://argocd-$(session_name).$(ingress_domain)/"
+    - name: Tekton
+      url: "$(ingress_protocol)://tekton-$(session_name).$(ingress_domain)/"
+    
     #- name: App
     #  url: "$(ingress_protocol)://application-$(session_name).$(ingress_domain)/"
 
