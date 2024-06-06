@@ -15,7 +15,7 @@ spec:
       This workspace contains the cloned repo files, so they can be read by the
       next task.
   - name: git-credentials
-    description: My ssh credentials
+    description: My git credentials
   tasks:
   - name: fetch-source
     taskRef:
@@ -23,7 +23,7 @@ spec:
     workspaces:
     - name: output
       workspace: shared-data
-    - name: ssh-directory
+    - name: basic-auth
       workspace: git-credentials
     params:
     - name: url

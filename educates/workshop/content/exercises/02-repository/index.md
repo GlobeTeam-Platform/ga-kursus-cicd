@@ -10,6 +10,7 @@ git remote add origin http://$GIT_HOST/myapp.git
 git add .
 git commit -m "first commit"
 git push -u -f origin main
+cd ..
 ```
 
 ```execute

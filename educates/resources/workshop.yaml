@@ -17,6 +17,7 @@ spec:
       - /exercises/**
       - /templates/**
       - /binary/**
+      - /install/**
       - /README.md
   session:
     namespaces:
@@ -39,6 +40,18 @@ spec:
         enabled: true
       vcluster:
         enabled: true
+        objects:
+        - apiVersion: v1
+          kind: Secret
+          metadata:
+            name: git-credentials
+          type: Opaque
+          stringData:
+            .gitconfig: |
+              [credential "$(git_protocol)://$(git_host)"]
+                helper = store
+            .git-credentials: |
+              $(git_protocol)://$(git_username):$(git_password)@$(git_host)
     #ingresses:
     #- name: application
     #  protocol: http
@@ -48,8 +61,6 @@ spec:
     - name: ArgoCD
       url: "$(ingress_protocol)://argocd-$(session_name).$(ingress_domain)/"
     - name: Tekton
-      url: "$(ingress_protocol)://tekton-$(session_name).$(ingress_domain)/"
-    
-    #- name: App
-    #  url: "$(ingress_protocol)://application-$(session_name).$(ingress_domain)/"
+      url: $(ingress_protocol)://tekton-$(session_namespace).$(ingress_domain)
+
 
