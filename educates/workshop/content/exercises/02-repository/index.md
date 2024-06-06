@@ -14,5 +14,5 @@ cd ..
 ```
 
 ```execute
-kubectl create -f /home/eduk8s/exercises/pipelinerun.yaml
+kubectl create -f /home/eduk8s/exercises/tekton/pipelinerun.yaml
 ```

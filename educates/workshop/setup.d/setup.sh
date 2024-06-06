@@ -12,7 +12,8 @@ ytt -f templates \
   --output-files exercises
 
 # Move files to cleanup
-mv /home/eduk8s/exercises/tektonui.yaml /home/eduk8s/exercises/tekton/tektonui.yaml
+mv /home/eduk8s/exercises/tektonui.yaml /home/eduk8s/install/tektonui.yaml
+mv /home/eduk8s/exercises/pipelinerun.yaml /home/eduk8s/exercises/tekton/pipelinerun.yaml
 
 # Install Tekton and modules
 mkdir /home/eduk8s/bin
@@ -23,7 +24,7 @@ kubectl wait --for=condition=Available deployment/tekton-pipelines-controller -n
 kubectl wait --for=condition=Available deployment/tekton-pipelines-remote-resolvers -n tekton-pipelines-resolvers
 kubectl wait --for=condition=Available deployment/tekton-events-controller -n tekton-pipelines
 kubectl wait --for=condition=Available deployment/tekton-pipelines-webhook -n tekton-pipelines
-kubectl apply -f /home/eduk8s/exercises/tekton/tektonui.yaml
+kubectl apply -f /home/eduk8s/install/tektonui.yaml
 kubectl apply -f /home/eduk8s/install/git-clone.yaml
 kubectl apply -f /home/eduk8s/exercises/tekton/pipeline.yaml
 
