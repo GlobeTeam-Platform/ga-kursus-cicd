@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+  xmlns:xhtml="http://www.w3.org/1999/xhtml">
+  <url>
+    <loc>http://localhost:1313/workshop/content/</loc>
+  </url><url>
+    <loc>http://localhost:1313/workshop/content/categories/</loc>
+  </url><url>
+    <loc>http://localhost:1313/workshop/content/exercises/03-ci/</loc>
+  </url><url>
+    <loc>http://localhost:1313/workshop/content/exercises/</loc>
+  </url><url>
+    <loc>http://localhost:1313/workshop/content/exercises/01-flow/</loc>
+  </url><url>
+    <loc>http://localhost:1313/workshop/content/exercises/02-repository/</loc>
+  </url><url>
+    <loc>http://localhost:1313/workshop/content/tags/</loc>
+  </url><url>
+    <loc>http://localhost:1313/workshop/content/exercises/00-workshop-overview/</loc>
+  </url>
+</urlset>

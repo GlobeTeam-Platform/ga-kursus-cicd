@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html>
+
+<head><script src="/workshop/content/livereload.js?mindelay=10&amp;v=2&amp;port=80&amp;path=workshop/content/livereload" data-no-instant defer></script>
+  <meta charset="utf-8">
+<meta name="generator" content="Educates (hugo)">
+
+<title>
+  
+  </title>
+
+<link rel="stylesheet" href='/workshop/static/bootstrap/css/bootstrap.css'>
+<link rel="stylesheet" href='/workshop/static/fontawesome/css/all.min.css'>
+
+<link rel="stylesheet" href='/workshop/static/styles/educates.css'>
+<link rel="stylesheet" href='/workshop/static/styles/educates-markdown.css'>
+<link rel="stylesheet" href='/workshop/static/theme/workshop-instructions.css'>
+
+<link rel="shortcut icon" href='/workshop/static/images/favicon.ico'>
+
+
+
+
+
+</head>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<body data-google-tracking-id=''
+  data-clarity-tracking-id=''
+  data-amplitude-tracking-id='' data-workshop-name='educates-cli--cicd-cf0336d'
+  data-session-namespace='educates-cli-w12-s001' data-workshop-namespace='educates-cli-w12'
+  data-training-portal='educates-cli' data-ingress-domain='192.168.50.243.nip.io'
+  data-ingress-protocol='http' data-ingress-port-suffix=''
+  data-prev-page='exercises/01-flow' data-current-page='exercises/02-repository'
+  data-next-page='exercises/03-ci' data-page-format='markdown' data-code-fences='chroma'
+  data-page-step='3' data-pages-total='4'>
+
+  
+
+
+
+
+<div class="modal fade" id="table-of-contents" tabindex="-1" role="dialog" aria-labelledby="table-of-contents-title"
+    aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 id="table-of-contents-title">CICD fundamentals</h5>
+                <button class="btn btn-close" type="button" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <ul class="menu">
+                    <li class="category">
+                        <ul class="modules">
+                            
+                            
+                            
+                            
+                            
+                            <li class="page">
+                                <a href="/workshop/content/exercises/00-workshop-overview">1: Workshop Overview</a>
+                            </li>
+                            
+                            
+                            
+                            
+                            
+                            
+                            <li class="page">
+                                <a href="/workshop/content/exercises/01-flow">2: Flow</a>
+                            </li>
+                            
+                            
+                            
+                            
+                            
+                            
+                            <li class="page active">
+                                <a href="/workshop/content/exercises/02-repository">3: Repository</a>
+                            </li>
+                            
+                            
+                            
+                            
+                            
+                            
+                            <li class="page">
+                                <a href="/workshop/content/exercises/03-ci">4: CI - Tekton</a>
+                            </li>
+                            
+                            
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-primary" type="button" data-bs-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="header page-navbar sticky-top bg-primary">
+    <div class="row row-no-gutters">
+        <div class="col-sm-12">
+            <div class="btn-group btn-group-sm" role="group">
+                <form action='/workshop/content/'>
+                    <button class="btn btn-transparent" id="header-goto-home" type="submit" aria-label="home"><span
+                            class="fas fa-home fa-inverse" aria-hidden="true"></span></button>
+                </form>
+            </div>
+            <div class="btn-toolbar float-end" role="toolbar">
+                <div class="btn-group btn-group-sm" role="group">
+                    <form action="/workshop/content/exercises/01-flow">
+                        <button class="btn btn-transparent" id="header-prev-page" type="submit"  aria-label="Prev"><span
+                                class="fas fa-arrow-left fa-inverse" aria-hidden="true"></span></button>
+                    </form>
+                    <form>
+                        <button class="btn btn-transparent" id="header-goto-toc" type="button" aria-label="TOC"
+                            data-bs-toggle="modal" data-bs-target="#table-of-contents"><span class="fas fa-list fa-inverse"
+                                aria-hidden="true"></span></button>
+                    </form>
+                    <form action="/workshop/content/exercises/03-ci">
+                        <button class="btn btn-transparent" id="header-next-page" type="submit"  aria-label="Next"><span
+                                class="fas fa-arrow-right fa-inverse" aria-hidden="true"></span></button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+  
+
+
+
+
+<div class="container-fluid main-content">
+  <div class="row">
+    <div class="col-sm-12">
+      <section class="page-content" id="main">
+        
+        
+        
+        <h1 class="title" id="title">3: Repository</h1>
+        
+        <div class="rendered-content">
+          <p>Since the &ldquo;Source of truth&rdquo; is a Git repository, then we will start by comitting our code, to a new repository.</p>
+<p>We already have some code in the <code>app</code>folder.
+To add this to a git repo, run the commands below.</p>
+<pre tabindex="0"><code class="language-execute" data-lang="execute">cd app
+git init
+git remote add origin http://$GIT_HOST/myapp.git
+git add .
+git commit -m &#34;first commit&#34;
+git push -u -f origin main
+cd ..
+</code></pre><p>If you want to see the new source location, then just run</p>
+<pre tabindex="0"><code class="language-execute" data-lang="execute">cat app/.git/config
+</code></pre><p>The output should be</p>
+<pre tabindex="0"><code>[core]
+        repositoryformatversion = 0
+        filemode = true
+        bare = false
+        logallrefupdates = true
+[remote &#34;origin&#34;]
+        url = http://git-educates-cli-w12-s001.192.168.50.243.nip.io/myapp.git
+        fetch = +refs/heads/*:refs/remotes/origin/*
+[branch &#34;main&#34;]
+        remote = origin
+        merge = refs/heads/main
+</code></pre><p>Where the <code>Remote Origin Url</code> is the path to your new repository.</p>
+<p>Note yours will probably have a different url.</p>
+<pre tabindex="0"><code class="language-execute" data-lang="execute">kubectl create -f /home/eduk8s/exercises/tekton/pipelinerun.yaml
+</code></pre>
+        </div>
+        
+        <div class="page-meta clearfix">
+          <form action="/workshop/content/exercises/03-ci">
+            <button class="btn btn-lg btn-primary float-end" id="next-page" type="submit" aria-label="continue">
+              Continue </button>
+          </form>
+        </div>
+        
+      </section>
+    </div>
+  </div>
+</div>
+</section>
+
+
+  <script src='/workshop/static/scripts/educates-bundle.js'></script>
+<script src='/workshop/static/theme/workshop-instructions.js'></script>
+
+
+</body>
+
+</html>
