@@ -1,4 +1,4 @@
 ---
 title: "CI - Setup"
 ---
-Tekton is already insta
+Tekton is already installed
