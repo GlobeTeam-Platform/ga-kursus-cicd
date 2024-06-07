@@ -154,9 +154,9 @@
   data-session-namespace='educates-cli-w14-s001' data-workshop-namespace='educates-cli-w14'
   data-training-portal='educates-cli' data-ingress-domain='192.168.50.243.nip.io'
   data-ingress-protocol='http' data-ingress-port-suffix=''
-  data-prev-page='' data-current-page='exercises/00-workshop-overview'
-  data-next-page='exercises/01-flow' data-page-format='markdown' data-code-fences='chroma'
-  data-page-step='1' data-pages-total='5'>
+  data-prev-page='' data-current-page=''
+  data-next-page='' data-page-format='markdown' data-code-fences='chroma'
+  data-page-step='' data-pages-total='5'>
 
   
 
@@ -180,7 +180,7 @@
                             
                             
                             
-                            <li class="page active">
+                            <li class="page">
                                 <a href="/workshop/content/exercises/00-workshop-overview">1: Workshop Overview</a>
                             </li>
                             
@@ -217,7 +217,7 @@
                             
                             
                             <li class="page">
-                                <a href="/workshop/content/exercises/04-ci-setup">5: CI - Setup</a>
+                                <a href="/workshop/content/exercises/03-ci%20copy">5: CI - Tekton</a>
                             </li>
                             
                             
@@ -252,8 +252,8 @@
                             data-bs-toggle="modal" data-bs-target="#table-of-contents"><span class="fas fa-list fa-inverse"
                                 aria-hidden="true"></span></button>
                     </form>
-                    <form action="/workshop/content/exercises/01-flow">
-                        <button class="btn btn-transparent" id="header-next-page" type="submit"  aria-label="Next"><span
+                    <form action="/workshop/content/">
+                        <button class="btn btn-transparent" id="header-next-page" type="submit" disabled=""  aria-label="Next"><span
                                 class="fas fa-arrow-right fa-inverse" aria-hidden="true"></span></button>
                     </form>
                 </div>
@@ -275,26 +275,28 @@
         
         
         
-        <h1 class="title" id="title">1: Workshop Overview</h1>
+        
+        
+        <h1 class="title" id="title">: CI - Tekton</h1>
         
         <div class="rendered-content">
-          <p>Welcome to CICD fundamentals</p>
-<p>In this workshop you will learn about</p>
+          <p><img src="tekton-horizontal-color.png" alt="tekton">
+For this workshop, we are using <a href="https://tekton.dev">Tekton</a> as our CI tool.</p>
+<p>There are many options out there, each with their own pro&rsquo;s and cons.</p>
+<p>Tekton is an extensible CI (and CD) tool, that you install on a Kubernetes cluster, and deploy tasks and pipelines from.</p>
+<p>We will be using it to pull from your Git Repository, build a container image, and then push this container image, to your registry, and update your deployment manifest.</p>
+<p>The green boxes show in the picture.</p>
+<p><img src="flow.png" alt="flow"></p>
+<p>Note we have chosen to split up CI and CD, so that Tekton handles CI and ArgoCD handles CD.</p>
+<hr>
+<p><strong>Talk in class about</strong></p>
 <ul>
-<li>What is Continius Integrations</li>
-<li>What is Continius Delivery</li>
-<li>How do you use it ?</li>
-<li>How to automate building applications and delivering them to Kubernetes</li>
+<li>Benefits of splitting CI/CD up</li>
+<li>Benefits of keeping them togher</li>
+<li>Different tools (Jenkins, Argo, Tekton, Github Actions, Gitlab etc.)</li>
 </ul>
-<p><img src="cicd.svg" alt="CICD"></p>
+<hr>
 
-        </div>
-        
-        <div class="page-meta clearfix">
-          <form action="/workshop/content/exercises/01-flow">
-            <button class="btn btn-lg btn-primary float-end" id="next-page" type="submit" aria-label="continue">
-              Continue </button>
-          </form>
         </div>
         
       </section>

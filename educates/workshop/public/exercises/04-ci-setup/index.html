@@ -154,9 +154,9 @@
   data-session-namespace='educates-cli-w14-s001' data-workshop-namespace='educates-cli-w14'
   data-training-portal='educates-cli' data-ingress-domain='192.168.50.243.nip.io'
   data-ingress-protocol='http' data-ingress-port-suffix=''
-  data-prev-page='' data-current-page='exercises/00-workshop-overview'
-  data-next-page='exercises/01-flow' data-page-format='markdown' data-code-fences='chroma'
-  data-page-step='1' data-pages-total='5'>
+  data-prev-page='exercises/03-ci' data-current-page='exercises/04-ci-setup'
+  data-next-page='' data-page-format='markdown' data-code-fences='chroma'
+  data-page-step='5' data-pages-total='5'>
 
   
 
@@ -180,7 +180,7 @@
                             
                             
                             
-                            <li class="page active">
+                            <li class="page">
                                 <a href="/workshop/content/exercises/00-workshop-overview">1: Workshop Overview</a>
                             </li>
                             
@@ -216,7 +216,7 @@
                             
                             
                             
-                            <li class="page">
+                            <li class="page active">
                                 <a href="/workshop/content/exercises/04-ci-setup">5: CI - Setup</a>
                             </li>
                             
@@ -243,8 +243,8 @@
             </div>
             <div class="btn-toolbar float-end" role="toolbar">
                 <div class="btn-group btn-group-sm" role="group">
-                    <form action="/workshop/content/">
-                        <button class="btn btn-transparent" id="header-prev-page" type="submit" disabled=""  aria-label="Prev"><span
+                    <form action="/workshop/content/exercises/03-ci">
+                        <button class="btn btn-transparent" id="header-prev-page" type="submit"  aria-label="Prev"><span
                                 class="fas fa-arrow-left fa-inverse" aria-hidden="true"></span></button>
                     </form>
                     <form>
@@ -252,8 +252,8 @@
                             data-bs-toggle="modal" data-bs-target="#table-of-contents"><span class="fas fa-list fa-inverse"
                                 aria-hidden="true"></span></button>
                     </form>
-                    <form action="/workshop/content/exercises/01-flow">
-                        <button class="btn btn-transparent" id="header-next-page" type="submit"  aria-label="Next"><span
+                    <form action="/workshop/content/">
+                        <button class="btn btn-transparent" id="header-next-page" type="submit" disabled=""  aria-label="Next"><span
                                 class="fas fa-arrow-right fa-inverse" aria-hidden="true"></span></button>
                     </form>
                 </div>
@@ -275,25 +275,17 @@
         
         
         
-        <h1 class="title" id="title">1: Workshop Overview</h1>
+        <h1 class="title" id="title">5: CI - Setup</h1>
         
         <div class="rendered-content">
-          <p>Welcome to CICD fundamentals</p>
-<p>In this workshop you will learn about</p>
-<ul>
-<li>What is Continius Integrations</li>
-<li>What is Continius Delivery</li>
-<li>How do you use it ?</li>
-<li>How to automate building applications and delivering them to Kubernetes</li>
-</ul>
-<p><img src="cicd.svg" alt="CICD"></p>
-
+          
         </div>
         
         <div class="page-meta clearfix">
-          <form action="/workshop/content/exercises/01-flow">
-            <button class="btn btn-lg btn-primary float-end" id="next-page" type="submit" aria-label="continue">
-              Continue </button>
+          <form>
+            <button class="btn btn-lg btn-primary float-end" id="next-page" type="button" aria-label="finish"
+              onclick="educates.finished_workshop()">
+              Finish Workshop </button>
           </form>
         </div>
         

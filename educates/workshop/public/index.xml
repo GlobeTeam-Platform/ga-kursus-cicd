@@ -8,25 +8,32 @@
     <language>en</language>
     <atom:link href="http://localhost:1313/workshop/content/index.xml" rel="self" type="application/rss+xml" />
     <item>
+      <title>CI - Setup</title>
+      <link>http://localhost:1313/workshop/content/exercises/04-ci-setup/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/workshop/content/exercises/04-ci-setup/</guid>
+      <description></description>
+    </item>
+    <item>
       <title>CI - Tekton</title>
       <link>http://localhost:1313/workshop/content/exercises/03-ci/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>http://localhost:1313/workshop/content/exercises/03-ci/</guid>
-      <description>For this workshop, we are using Tekton as our CI tool.&#xA;There are many options out there, each with their own pro&amp;rsquo;s and cons.&#xA;Tekton is an extensible CI (and CD) tool, you install on a Kubernetes cluster, and can deploy tasks and pipelines, in a Kubernetes format.&#xA;We will be using it to pull from your Git Repository, and build a container image, and then push this container image, to your registry, and update your deployment manifest.</description>
+      <description>For this workshop, we are using Tekton as our CI tool.&#xA;There are many options out there, each with their own pro&amp;rsquo;s and cons.&#xA;Tekton is an extensible CI (and CD) tool, that you install on a Kubernetes cluster, and deploy tasks and pipelines from.&#xA;We will be using it to pull from your Git Repository, build a container image, and then push this container image, to your registry, and update your deployment manifest.</description>
     </item>
     <item>
       <title>Flow</title>
       <link>http://localhost:1313/workshop/content/exercises/01-flow/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>http://localhost:1313/workshop/content/exercises/01-flow/</guid>
-      <description>The flow we will be doing today, looks like this.&#xA;It&amp;rsquo;s split up, into Continius Integration (CI) and Continius Delivery (CD), with Git in the Center as the &amp;ldquo;Source of truth&amp;rdquo;&#xA;It&amp;rsquo;s triggered by a commit to Git, that updated the code or container, or deployment configuration.&#xA;Depending on which, a flow will be triggered automatic, that will end up in a new version of the application being deployed.</description>
+      <description>The flow we will be going thru today, looks like this.&#xA;It&amp;rsquo;s split up, into Continius Integration (CI) and Continius Delivery (CD), with Git in the Center as the &amp;ldquo;Source of truth&amp;rdquo;&#xA;The flow is triggered by a commit to Git, that updates the code or container, or deployment configuration.&#xA;Depending on which, a flow will be triggered automatic, that will end up with a new version of the application being deployed.</description>
     </item>
     <item>
       <title>Repository</title>
       <link>http://localhost:1313/workshop/content/exercises/02-repository/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>http://localhost:1313/workshop/content/exercises/02-repository/</guid>
-      <description>Since the &amp;ldquo;Source of truth&amp;rdquo; is a Git repository, then we will start by comitting our code, to a new repository.&#xA;We already have some code in the appfolder. To add this to a git repo, run the commands below.&#xA;cd app git init git remote add origin http://$GIT_HOST/myapp.git git add . git commit -m &amp;#34;first commit&amp;#34; git push -u -f origin main cd .. If you want to see the new source location, then just run</description>
+      <description>Since the &amp;ldquo;Source of truth&amp;rdquo; is a Git repository, then we will start by comitting our code, to a new repository.&#xA;We already have all we need in the app folder.&#xA;So all we need is to push this to a Git repository, so we can start working on it.&#xA;This is done, by running the commands below.&#xA;cd app git init git remote add origin http://$GIT_HOST/myapp.git git add . git commit -m &amp;#34;first commit&amp;#34; git push -u -f origin main cd .</description>
     </item>
     <item>
       <title>Workshop Overview</title>

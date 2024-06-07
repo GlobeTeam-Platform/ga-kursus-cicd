@@ -3,8 +3,11 @@ title: "Repository"
 ---
 Since the "Source of truth" is a Git repository, then we will start by comitting our code, to a new repository.
 
-We already have some code in the `app`folder. 
-To add this to a git repo, run the commands below.
+We already have all we need in the `app` folder.
+
+So all we need is to push this to a Git repository, so we can start working on it. 
+
+This is done, by running the commands below.
 
 ```execute
 cd app
