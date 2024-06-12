@@ -12,7 +12,14 @@
       <link>http://localhost:1313/workshop/content/exercises/04-ci-setup/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>http://localhost:1313/workshop/content/exercises/04-ci-setup/</guid>
-      <description></description>
+      <description>Tekton is already installed on your Kubernetes cluster.&#xA;Along with some tasks, and a Pipeline.&#xA;To see the tasks installed run&#xA;kubectl get tasks You should see&#xA;NAME AGE git-clone 24m kaniko 24m Git clone, clones a Git Repository, and Kanikp, build a container image, directly on your Kubernetes cluster.&#xA;To see the pipeline run&#xA;kubectl get pipeline It shows&#xA;NAME AGE clone-build-push 26m a single pipeline, with the name clone-build-push</description>
+    </item>
+    <item>
+      <title>CI - Setup</title>
+      <link>http://localhost:1313/workshop/content/exercises/05-app/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/workshop/content/exercises/05-app/</guid>
+      <description>Tekton is already installed on your Kubernetes cluster.&#xA;Along with some tasks, and a Pipeline.&#xA;To see the tasks installed run&#xA;kubectl get tasks You should see&#xA;NAME AGE git-clone 24m kaniko 24m Git clone, clones a Git Repository, and Kanikp, build a container image, directly on your Kubernetes cluster.&#xA;To see the pipeline run&#xA;kubectl get pipeline It shows&#xA;NAME AGE clone-build-push 26m a single pipeline, with the name clone-build-push</description>
     </item>
     <item>
       <title>CI - Tekton</title>

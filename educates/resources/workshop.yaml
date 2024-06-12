@@ -6,6 +6,17 @@ spec:
   title: "CICD fundamentals"
   description: "Learn the fundamentals of CICD"
   url: https://github.com/GlobeTeam-Platform/ga-kursus-cicd
+  difficulty: beginner
+  duration: 3h
+  vendor: 12f.dk
+  authors:
+    - Robert Jensen
+  tags:
+    - gitops
+    - devops
+    - argocd
+    - tekton
+    - kubernetes
   publish:
     image: "$(image_repository)/ga-kursus-cicd-files:$(workshop_version)"
   workshop:
@@ -27,7 +38,7 @@ spec:
         enabled: true
       terminal:
         enabled: true
-        #layout: split
+        layout: split
       editor:
         enabled: true
       console:
@@ -71,12 +82,12 @@ spec:
     #ingresses:
     #- name: application
     #  protocol: http
-      #host: nginx-deployment.$(session_namespace).svc.$(cluster_domain)
+    #  host: nginx-deployment.$(session_namespace).svc.$(cluster_domain)
     #  port: 8080
     dashboards:
     - name: ArgoCD
-      url: "$(ingress_protocol)://argocd-$(session_name).$(ingress_domain)/"
+      url: "$(ingress_protocol)://argocd-$(session_name).$(ingress_domain)"
     - name: Tekton
-      url: $(ingress_protocol)://tekton-$(session_namespace).$(ingress_domain)
+      url: "$(ingress_protocol)://tekton-$(session_name).$(ingress_domain)"
 
 

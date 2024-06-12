@@ -1,0 +1,19 @@
+#@ load("@ytt:data", "data")
+---
+configs:
+  params:
+    server.insecure: true                    #! Let the Ingress handle TLS
+    server.x.frame.options: '""'             #! Allow embedding
+    server.content.security.policy: '""'     #! Allow embedding
+server:
+  service:
+    annotations:
+      projectcontour.io/upstream-protocol.h2c: "https,443"
+  ingress:
+    enabled: true                            #! Enable Ingress
+    tls: true                                #! Enable TLS for Ingress
+    hostname: #@ "argocd-{SESSION_NAMESPACE}.{INGRESS_DOMAIN}".format(**data.values)
+  ingressGrpc:
+    enabled: true                            #! Enable Ingress
+    tls: true                                #! Enable TLS for Ingress
+    hostname: #@ "grpc-argocd-{SESSION_NAMESPACE}.{INGRESS_DOMAIN}".format(**data.values)

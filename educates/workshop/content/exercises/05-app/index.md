@@ -82,7 +82,7 @@ spec:
       value: $(params.image-reference)
 ```
 
-The pipeline clones the Git repository, builds the contianer, pushes it to a container registry, and updates and commits the deployment.yaml with the new container image version.
+TODO: Add text about the pipeline file.
 
 
 ```execute

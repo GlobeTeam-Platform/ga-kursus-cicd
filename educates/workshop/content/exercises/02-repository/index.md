@@ -44,7 +44,4 @@ Where the `Remote Origin Url` is the path to your new repository.
 Note yours will probably have a different url.
 
 
-```execute
-kubectl create -f /home/eduk8s/exercises/tekton/pipelinerun.yaml
-```
 

@@ -13,6 +13,8 @@ ytt -f templates \
 
 # Move files to cleanup env
 mv /home/eduk8s/exercises/tektonui.yaml /home/eduk8s/install/tektonui.yaml
+mv /home/eduk8s/exercises/argocdui.yaml /home/eduk8s/install/argocdui.yaml
+mv /home/eduk8s/exercises/argocd-values.yaml /home/eduk8s/install/argocd-values.yaml
 mv /home/eduk8s/exercises/pipelinerun.yaml /home/eduk8s/exercises/tekton/pipelinerun.yaml
 
 # Install Tekton and modules
@@ -29,3 +31,12 @@ kubectl apply -f /home/eduk8s/install/git-clone.yaml
 kubectl apply -f /home/eduk8s/install/kaniko.yaml
 kubectl apply -f /home/eduk8s/exercises/tekton/pipeline.yaml
 
+# Install ArgoCD etc.
+curl -sLo /home/eduk8s/bin/argocd https://github.com/argoproj/argo-cd/releases/download/v2.11.3/argocd-linux-amd64
+chmod 755 /home/eduk8s/bin/argocd
+helm repo add argo https://argoproj.github.io/argo-helm
+helm repo update
+helm install argocd argo/argo-cd \
+    --namespace argocd \
+    --create-namespace \
+    -f /home/eduk8s/install/argocd-values.yaml

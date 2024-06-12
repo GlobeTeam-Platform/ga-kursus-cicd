@@ -148,15 +148,34 @@
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 <body data-google-tracking-id=''
   data-clarity-tracking-id=''
   data-amplitude-tracking-id='' data-workshop-name='educates-cli--cicd-cf0336d'
-  data-session-namespace='educates-cli-w14-s001' data-workshop-namespace='educates-cli-w14'
+  data-session-namespace='educates-cli-w16-s002' data-workshop-namespace='educates-cli-w16'
   data-training-portal='educates-cli' data-ingress-domain='192.168.50.243.nip.io'
   data-ingress-protocol='http' data-ingress-port-suffix=''
   data-prev-page='exercises/03-ci' data-current-page='exercises/04-ci-setup'
-  data-next-page='' data-page-format='markdown' data-code-fences='chroma'
-  data-page-step='5' data-pages-total='5'>
+  data-next-page='exercises/05-app' data-page-format='markdown' data-code-fences='chroma'
+  data-page-step='5' data-pages-total='6'>
 
   
 
@@ -221,6 +240,15 @@
                             </li>
                             
                             
+                            
+                            
+                            
+                            
+                            <li class="page">
+                                <a href="/workshop/content/exercises/05-app">6: CI - Setup</a>
+                            </li>
+                            
+                            
                         </ul>
                     </li>
                 </ul>
@@ -252,8 +280,8 @@
                             data-bs-toggle="modal" data-bs-target="#table-of-contents"><span class="fas fa-list fa-inverse"
                                 aria-hidden="true"></span></button>
                     </form>
-                    <form action="/workshop/content/">
-                        <button class="btn btn-transparent" id="header-next-page" type="submit" disabled=""  aria-label="Next"><span
+                    <form action="/workshop/content/exercises/05-app">
+                        <button class="btn btn-transparent" id="header-next-page" type="submit"  aria-label="Next"><span
                                 class="fas fa-arrow-right fa-inverse" aria-hidden="true"></span></button>
                     </form>
                 </div>
@@ -278,14 +306,77 @@
         <h1 class="title" id="title">5: CI - Setup</h1>
         
         <div class="rendered-content">
-          
+          <p>Tekton is already installed on your Kubernetes cluster.</p>
+<p>Along with some tasks, and a Pipeline.</p>
+<p>To see the tasks installed run</p>
+<pre tabindex="0"><code class="language-execute" data-lang="execute">kubectl get tasks
+</code></pre><p>You should see</p>
+<pre tabindex="0"><code>NAME        AGE
+git-clone   24m
+kaniko      24m
+</code></pre><p>Git clone, clones a Git Repository, and Kanikp, build a container image, directly on your Kubernetes cluster.</p>
+<p>To see the pipeline run</p>
+<pre tabindex="0"><code class="language-execute" data-lang="execute">kubectl get pipeline
+</code></pre><p>It shows</p>
+<pre tabindex="0"><code>NAME               AGE
+clone-build-push   26m
+</code></pre><p>a single pipeline, with the name clone-build-push</p>
+<p>To see the content of the pileline, open it in the editor</p>
+<pre tabindex="0"><code class="language-editor:open-file" data-lang="editor:open-file">title: Open pipeline.yaml
+file: ~/exercises/tekton/pipeline.yaml
+</code></pre><p>The file should look like this</p>
+<p>TODO: check if file has changed, when the course is finished.</p>
+<pre tabindex="0"><code>apiVersion: tekton.dev/v1beta1
+kind: Pipeline
+metadata:
+  name: clone-build-push
+spec:
+  description: | 
+    This pipeline clones a git repo, builds a Docker image with Kaniko and
+    pushes it to a registry
+  params:
+  - name: repo-url
+    type: string
+  - name: image-reference
+    type: string
+  workspaces:
+  - name: shared-data
+  - name: git-credentials
+    description: My git credentials
+  - name: docker-credentials
+  tasks:
+  - name: fetch-source
+    taskRef:
+      name: git-clone
+    workspaces:
+    - name: output
+      workspace: shared-data
+    - name: basic-auth
+      workspace: git-credentials
+    params:
+    - name: url
+      value: $(params.repo-url)
+  - name: build-push
+    runAfter: [&#34;fetch-source&#34;]
+    taskRef:
+      name: kaniko
+    workspaces:
+    - name: source
+      workspace: shared-data
+    - name: dockerconfig
+      workspace: docker-credentials
+    params:
+    - name: IMAGE
+      value: $(params.image-reference)
+</code></pre><p>The pipeline clones the Git repository, builds the contianer, pushes it to a container registry, and updates and commits the deployment.yaml with the new container image version.</p>
+<pre tabindex="0"><code class="language-execute" data-lang="execute">kubectl create -f /home/eduk8s/exercises/tekton/pipelinerun.yaml
+</code></pre>
         </div>
         
         <div class="page-meta clearfix">
-          <form>
-            <button class="btn btn-lg btn-primary float-end" id="next-page" type="button" aria-label="finish"
-              onclick="educates.finished_workshop()">
-              Finish Workshop </button>
+          <form action="/workshop/content/exercises/05-app">
+            <button class="btn btn-lg btn-primary float-end" id="next-page" type="submit" aria-label="continue">
+              Continue </button>
           </form>
         </div>
         

@@ -1,3 +1,3 @@
-FROM alpine
+FROM nginx
 
-ENTRYPOINT echo hello medium
+COPY ./html /usr/share/nginx/html
