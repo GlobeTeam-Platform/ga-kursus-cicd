@@ -2,7 +2,7 @@
 title: "CI - Makefile"
 ---
 
-To run the pipelines/functions we need to use the dagger cli, with a lot of options, for the variable inputs, that each function requires.
+To run the pipelines/functions we need to use the dagger cli, with a lot of options, for the variable inputs, that each functions requires.
 
 To make this easier, we are utilizing [Makefiles](https://www.gnu.org/software/make/).
 

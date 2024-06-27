@@ -1,6 +1,6 @@
 <mxfile host="65bd71144e">
     <diagram id="pcwf7MCDWp1G8hKM03mw" name="Page-1">
-        <mxGraphModel dx="684" dy="633" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+        <mxGraphModel dx="619" dy="290" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
             <root>
                 <mxCell id="0"/>
                 <mxCell id="1" parent="0"/>
@@ -19,7 +19,7 @@
                 <mxCell id="16" value="" style="edgeStyle=none;html=1;" parent="1" source="12" target="15" edge="1">
                     <mxGeometry relative="1" as="geometry"/>
                 </mxCell>
-                <mxCell id="12" value="Git commit triggers Tekton pipeline" style="whiteSpace=wrap;html=1;aspect=fixed;fillColor=#60a917;fontColor=#ffffff;strokeColor=#2D7600;" parent="1" vertex="1">
+                <mxCell id="12" value="Dagger pipeline" style="whiteSpace=wrap;html=1;aspect=fixed;fillColor=#60a917;fontColor=#ffffff;strokeColor=#2D7600;" parent="1" vertex="1">
                     <mxGeometry x="360" y="240" width="80" height="80" as="geometry"/>
                 </mxCell>
                 <mxCell id="18" value="" style="edgeStyle=none;html=1;" parent="1" source="15" target="17" edge="1">
@@ -76,6 +76,12 @@
                 </mxCell>
                 <mxCell id="32" value="Notifies ArgoCD of new changes" style="whiteSpace=wrap;html=1;aspect=fixed;fillColor=#0050ef;fontColor=#ffffff;strokeColor=#001DBC;" parent="1" vertex="1">
                     <mxGeometry x="520" y="720" width="80" height="80" as="geometry"/>
+                </mxCell>
+                <mxCell id="36" value="" style="edgeStyle=none;html=1;strokeColor=default;jumpStyle=none;exitX=1;exitY=0.5;exitDx=0;exitDy=0;shadow=0;dashed=1;dashPattern=8 8;" edge="1" parent="1" source="2">
+                    <mxGeometry relative="1" as="geometry">
+                        <mxPoint x="200" y="279.5" as="sourcePoint"/>
+                        <mxPoint x="360" y="279.5" as="targetPoint"/>
+                    </mxGeometry>
                 </mxCell>
             </root>
         </mxGraphModel>

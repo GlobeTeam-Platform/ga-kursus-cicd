@@ -15,7 +15,7 @@ spec:
     - gitops
     - devops
     - argocd
-    - tekton
+    - Dagger
     - kubernetes
   publish:
     image: "$(image_repository)/ga-kursus-cicd-files:$(workshop_version)"

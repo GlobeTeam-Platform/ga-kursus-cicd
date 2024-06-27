@@ -25,9 +25,3 @@ k get pods -w -A
 <ctrl+c>
 ```
 
-```dashboard:reload-dashboard
-prefix: Open
-title: Open TektonUI
-name: Tekton
-url: {{< param ingress_protocol >}}://tekton-{{< param session_name >}}.{{< param ingress_domain >}}
-```

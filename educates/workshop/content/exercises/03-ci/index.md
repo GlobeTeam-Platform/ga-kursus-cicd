@@ -12,9 +12,7 @@ It's big strength is that you can run and test it local and remote, and get the 
 
 This is usefull in our enviroment, where we have some restrictions, compared to a "real" enviroment.
 
-We will be using it to pull from your Git Repository, build a container image, and then push this container image, to your registry, and update your deployment manifest.
-
-The green boxes show in the picture.
+We will be using it to build a container from our local Git Repository, and then push this container image, to our registry, and update our deployment manifest, in our remote git repository.
 
 ![flow](flow.png)
 

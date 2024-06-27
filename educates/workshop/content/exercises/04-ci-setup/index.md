@@ -3,7 +3,7 @@ title: "CI - Setup"
 ---
 Dagger cli is already installed in your enviroment.
 
-The pipelines are all defines in the `dagger`directory under your `app` directory.
+The pipelines are all defines in the `dagger` directory under your `app` directory.
 
 For this workshop, we won't setup and pipelines etc. We will just use the ones, that are already created.
 
@@ -84,3 +84,5 @@ There are 3 functions.
 - deploy
 
   Combines build and update to one job.
+
+In the next session, we will see how to run them.
