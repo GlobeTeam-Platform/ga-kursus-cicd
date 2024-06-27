@@ -15,6 +15,7 @@ class App:
             dagger.Directory,
             Doc("location of directory containing Dockerfile"),
         ],
+        git_user: str,
     ) -> str:
         """Build and publish image from existing Dockerfile"""
         image_url = (
@@ -23,7 +24,7 @@ class App:
             .with_workdir("/src")
             .directory("/src")
             .docker_build()  # build from Dockerfile
-            .publish("ttl.sh/my-shiny-app")
+            .publish("ttl.sh/"+git_user)
         )
         return image_url
     
@@ -50,7 +51,7 @@ class App:
             git_password: dagger.Secret, 
             force_with_lease: bool) -> str:
         
-        image_url = await(self.build(src))
+        image_url = await(self.build(src, git_user))
         await self.update(repo, branch, deploy_filepath, image_url, git_user, git_email, git_password, force_with_lease)
         """Create and push container image, and update deployment file, with the new image name and tag"""
         return image_url

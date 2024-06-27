@@ -9,31 +9,38 @@
     <atom:link href="http://localhost:1313/workshop/content/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>App</title>
-      <link>http://localhost:1313/workshop/content/exercises/05-app/</link>
+      <link>http://localhost:1313/workshop/content/exercises/06-app/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/workshop/content/exercises/05-app/</guid>
+      <guid>http://localhost:1313/workshop/content/exercises/06-app/</guid>
       <description>The app we will be using today, is a simple one page website.&#xA;It&amp;rsquo;s located in the app folder, under html and there is also a Dockerfile, that we use to package the app.&#xA;TODO: More content</description>
     </item>
     <item>
       <title>ArgoCD</title>
-      <link>http://localhost:1313/workshop/content/exercises/06-argocd/</link>
+      <link>http://localhost:1313/workshop/content/exercises/07-argocd/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/workshop/content/exercises/06-argocd/</guid>
+      <guid>http://localhost:1313/workshop/content/exercises/07-argocd/</guid>
       <description>For CD (Continus Deployment) we will be using ArgoCD.&#xA;ArgoCD is one of the major solutions for doing CD. It&amp;rsquo;s often compared with Flux and both products have a lot of overlapping features.&#xA;One of the major reasons for using Argo in this workshop, over Flux, is that ArgoCD has a nice UI, where we can see the changes that we are doing.&#xA;ArgoCD is already installed, but to access it, we first need to get a password.</description>
+    </item>
+    <item>
+      <title>CI - Dagger</title>
+      <link>http://localhost:1313/workshop/content/exercises/03-ci/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/workshop/content/exercises/03-ci/</guid>
+      <description>For this workshop, we are using Dagger as our CI tool.&#xA;There are many options out there, each with their own pro&amp;rsquo;s and cons.&#xA;Dagger works by creating pipelines as code, and running it in containers.&#xA;It&amp;rsquo;s big strength is that you can run and test it local and remote, and get the same results.&#xA;This is usefull in our enviroment, where we have some restrictions, compared to a &amp;ldquo;real&amp;rdquo; enviroment.</description>
+    </item>
+    <item>
+      <title>CI - Makefile</title>
+      <link>http://localhost:1313/workshop/content/exercises/05-ci-makefile/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/workshop/content/exercises/05-ci-makefile/</guid>
+      <description>To run the pipelines/functions we need to use the dagger cli, with a lot of options, for the variable inputs, that each function requires.&#xA;To make this easier, we are utilizing Makefiles.&#xA;Makefiles is a simple way, of automation commands, jobs etc.&#xA;They simply require you to have make installed, and to have a Makefile in the current directory.&#xA;Our Makefile looks like this, and is located in the app folder.</description>
     </item>
     <item>
       <title>CI - Setup</title>
       <link>http://localhost:1313/workshop/content/exercises/04-ci-setup/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>http://localhost:1313/workshop/content/exercises/04-ci-setup/</guid>
-      <description>Tekton is already installed on your Kubernetes cluster.&#xA;Along with some tasks, and a Pipeline.&#xA;To see the tasks installed run&#xA;prefix: Run title: Get installed tasks command: kubectl get tasks You should see&#xA;NAME AGE git-clone 2m25s kaniko 2m25s deploy 2m25s Git clone, clones a Git Repository, and Kanikp, build a container image, directly on your Kubernetes cluster.&#xA;To see the pipeline run&#xA;prefix: Run title: Get installed pipelines command: kubectl get pipeline It shows</description>
-    </item>
-    <item>
-      <title>CI - Tekton</title>
-      <link>http://localhost:1313/workshop/content/exercises/03-ci/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/workshop/content/exercises/03-ci/</guid>
-      <description>For this workshop, we are using Tekton as our CI tool.&#xA;There are many options out there, each with their own pro&amp;rsquo;s and cons.&#xA;Tekton is an extensible CI (and CD) tool, that you install on a Kubernetes cluster, and deploy tasks and pipelines from.&#xA;We will be using it to pull from your Git Repository, build a container image, and then push this container image, to your registry, and update your deployment manifest.</description>
+      <description>Dagger cli is already installed in your enviroment.&#xA;The pipelines are all defines in the daggerdirectory under your app directory.&#xA;For this workshop, we won&amp;rsquo;t setup and pipelines etc. We will just use the ones, that are already created.&#xA;Dagger works by creating functions we can call.&#xA;in app/dagger/src/main/__init__.py you will find the functions, written in Python.&#xA;The code looks like this :&#xA;from typing import Annotated import dagger from dagger import Doc, dag, function, object_type @object_type class App: image_url: str = &amp;#34;&amp;#34; @function def build( self, src: Annotated[ dagger.</description>
     </item>
     <item>
       <title>Flow</title>
@@ -54,7 +61,7 @@
       <link>http://localhost:1313/workshop/content/exercises/99-temp/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>http://localhost:1313/workshop/content/exercises/99-temp/</guid>
-      <description>prefix: Open title: Open ArgoCD name: ArgoCD url: http://argocd-educates-cli-w02-s001.192.168.50.243.nip.io prefix: Run title: Get ArgoCD password from secret command: | ARGOCD_PASSWORD=$(kubectl -n argocd get secret argocd-initial-admin-secret -o jsonpath=&amp;#34;{.data.password}&amp;#34; | base64 -d) echo $ARGOCD_PASSWORD k get pods -w -A &amp;lt;ctrl+c&amp;gt; prefix: Open title: Open TektonUI name: Tekton url: http://tekton-educates-cli-w02-s001.192.168.50.243.nip.io </description>
+      <description>prefix: Open title: Open ArgoCD name: ArgoCD url: http://argocd-educates-cli-w04-s001.192.168.50.243.nip.io prefix: Run title: Get ArgoCD password from secret command: | ARGOCD_PASSWORD=$(kubectl -n argocd get secret argocd-initial-admin-secret -o jsonpath=&amp;#34;{.data.password}&amp;#34; | base64 -d) echo $ARGOCD_PASSWORD k get pods -w -A &amp;lt;ctrl+c&amp;gt; prefix: Open title: Open TektonUI name: Tekton url: http://tekton-educates-cli-w04-s001.192.168.50.243.nip.io </description>
     </item>
     <item>
       <title>Workshop Overview</title>

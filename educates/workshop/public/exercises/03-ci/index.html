@@ -205,15 +205,34 @@
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 <body data-google-tracking-id=''
   data-clarity-tracking-id=''
   data-amplitude-tracking-id='' data-workshop-name='educates-cli--cicd-cf0336d'
-  data-session-namespace='educates-cli-w02-s001' data-workshop-namespace='educates-cli-w02'
+  data-session-namespace='educates-cli-w04-s001' data-workshop-namespace='educates-cli-w04'
   data-training-portal='educates-cli' data-ingress-domain='192.168.50.243.nip.io'
   data-ingress-protocol='http' data-ingress-port-suffix=''
   data-prev-page='exercises/02-repository' data-current-page='exercises/03-ci'
   data-next-page='exercises/04-ci-setup' data-page-format='markdown' data-code-fences='chroma'
-  data-page-step='4' data-pages-total='8'>
+  data-page-step='4' data-pages-total='9'>
 
   
 
@@ -265,7 +284,7 @@
                             
                             
                             <li class="page active">
-                                <a href="/workshop/content/exercises/03-ci">4: CI - Tekton</a>
+                                <a href="/workshop/content/exercises/03-ci">4: CI - Dagger</a>
                             </li>
                             
                             
@@ -283,7 +302,7 @@
                             
                             
                             <li class="page">
-                                <a href="/workshop/content/exercises/05-app">6: App</a>
+                                <a href="/workshop/content/exercises/05-ci-makefile">6: CI - Makefile</a>
                             </li>
                             
                             
@@ -292,7 +311,7 @@
                             
                             
                             <li class="page">
-                                <a href="/workshop/content/exercises/06-argocd">7: ArgoCD</a>
+                                <a href="/workshop/content/exercises/06-app">7: App</a>
                             </li>
                             
                             
@@ -301,7 +320,16 @@
                             
                             
                             <li class="page">
-                                <a href="/workshop/content/exercises/99-temp">8: Temp</a>
+                                <a href="/workshop/content/exercises/07-argocd">8: ArgoCD</a>
+                            </li>
+                            
+                            
+                            
+                            
+                            
+                            
+                            <li class="page">
+                                <a href="/workshop/content/exercises/99-temp">9: Temp</a>
                             </li>
                             
                             
@@ -359,23 +387,25 @@
         
         
         
-        <h1 class="title" id="title">4: CI - Tekton</h1>
+        <h1 class="title" id="title">4: CI - Dagger</h1>
         
         <div class="rendered-content">
-          <p><img src="tekton-horizontal-color.png" alt="tekton">
-For this workshop, we are using <a href="https://tekton.dev">Tekton</a> as our CI tool.</p>
+          <p><img src="dagger-logo.png" alt="dagger">
+For this workshop, we are using <a href="https://dagger.io">Dagger</a> as our CI tool.</p>
 <p>There are many options out there, each with their own pro&rsquo;s and cons.</p>
-<p>Tekton is an extensible CI (and CD) tool, that you install on a Kubernetes cluster, and deploy tasks and pipelines from.</p>
+<p>Dagger works by creating pipelines as code, and running it in containers.</p>
+<p>It&rsquo;s big strength is that you can run and test it local and remote, and get the same results.</p>
+<p>This is usefull in our enviroment, where we have some restrictions, compared to a &ldquo;real&rdquo; enviroment.</p>
 <p>We will be using it to pull from your Git Repository, build a container image, and then push this container image, to your registry, and update your deployment manifest.</p>
 <p>The green boxes show in the picture.</p>
 <p><img src="flow.png" alt="flow"></p>
-<p>Note we have chosen to split up CI and CD, so that Tekton handles CI and ArgoCD handles CD.</p>
+<p>Note we have chosen to split up CI and CD, so that Dagger handles CI and ArgoCD handles CD.</p>
 <hr>
 <p><strong>Talk in class about</strong></p>
 <ul>
 <li>Benefits of splitting CI/CD up</li>
 <li>Benefits of keeping them togher</li>
-<li>Different tools (Jenkins, Argo, Tekton, Github Actions, Gitlab etc.)</li>
+<li>Different tools (Dagger, Jenkins, Argo, Tekton, Github Actions, Gitlab etc.)</li>
 </ul>
 <hr>
 

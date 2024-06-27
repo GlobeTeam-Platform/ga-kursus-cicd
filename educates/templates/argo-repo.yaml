@@ -1,0 +1,14 @@
+#@ load("@ytt:data", "data")
+---
+apiVersion: v1
+kind: Secret
+metadata:
+  name: my-repo
+  namespace: argocd
+  labels:
+    argocd.argoproj.io/secret-type: repository
+stringData:
+  type: git
+  url: #@ "http://{GIT_HOST}/myapp.git".format(**data.values)
+  password: #@ "{GIT_PASSWORD}".format(**data.values)
+  username: #@ "{GIT_USERNAME}".format(**data.values)

@@ -205,15 +205,34 @@
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 <body data-google-tracking-id=''
   data-clarity-tracking-id=''
   data-amplitude-tracking-id='' data-workshop-name='educates-cli--cicd-cf0336d'
-  data-session-namespace='educates-cli-w02-s001' data-workshop-namespace='educates-cli-w02'
+  data-session-namespace='educates-cli-w04-s001' data-workshop-namespace='educates-cli-w04'
   data-training-portal='educates-cli' data-ingress-domain='192.168.50.243.nip.io'
   data-ingress-protocol='http' data-ingress-port-suffix=''
   data-prev-page='exercises/03-ci' data-current-page='exercises/04-ci-setup'
-  data-next-page='exercises/05-app' data-page-format='markdown' data-code-fences='chroma'
-  data-page-step='5' data-pages-total='8'>
+  data-next-page='exercises/05-ci-makefile' data-page-format='markdown' data-code-fences='chroma'
+  data-page-step='5' data-pages-total='9'>
 
   
 
@@ -265,7 +284,7 @@
                             
                             
                             <li class="page">
-                                <a href="/workshop/content/exercises/03-ci">4: CI - Tekton</a>
+                                <a href="/workshop/content/exercises/03-ci">4: CI - Dagger</a>
                             </li>
                             
                             
@@ -283,7 +302,7 @@
                             
                             
                             <li class="page">
-                                <a href="/workshop/content/exercises/05-app">6: App</a>
+                                <a href="/workshop/content/exercises/05-ci-makefile">6: CI - Makefile</a>
                             </li>
                             
                             
@@ -292,7 +311,7 @@
                             
                             
                             <li class="page">
-                                <a href="/workshop/content/exercises/06-argocd">7: ArgoCD</a>
+                                <a href="/workshop/content/exercises/06-app">7: App</a>
                             </li>
                             
                             
@@ -301,7 +320,16 @@
                             
                             
                             <li class="page">
-                                <a href="/workshop/content/exercises/99-temp">8: Temp</a>
+                                <a href="/workshop/content/exercises/07-argocd">8: ArgoCD</a>
+                            </li>
+                            
+                            
+                            
+                            
+                            
+                            
+                            <li class="page">
+                                <a href="/workshop/content/exercises/99-temp">9: Temp</a>
                             </li>
                             
                             
@@ -336,7 +364,7 @@
                             data-bs-toggle="modal" data-bs-target="#table-of-contents"><span class="fas fa-list fa-inverse"
                                 aria-hidden="true"></span></button>
                     </form>
-                    <form action="/workshop/content/exercises/05-app">
+                    <form action="/workshop/content/exercises/05-ci-makefile">
                         <button class="btn btn-transparent" id="header-next-page" type="submit"  aria-label="Next"><span
                                 class="fas fa-arrow-right fa-inverse" aria-hidden="true"></span></button>
                     </form>
@@ -362,83 +390,88 @@
         <h1 class="title" id="title">5: CI - Setup</h1>
         
         <div class="rendered-content">
-          <p>Tekton is already installed on your Kubernetes cluster.</p>
-<p>Along with some tasks, and a Pipeline.</p>
-<p>To see the tasks installed run</p>
-<pre tabindex="0"><code class="language-terminal:execute" data-lang="terminal:execute">prefix: Run
-title: Get installed tasks
-command: kubectl get tasks
-</code></pre><p>You should see</p>
-<pre tabindex="0"><code>NAME        AGE
-git-clone   2m25s
-kaniko      2m25s
-deploy      2m25s
-</code></pre><p>Git clone, clones a Git Repository, and Kanikp, build a container image, directly on your Kubernetes cluster.</p>
-<p>To see the pipeline run</p>
-<pre tabindex="0"><code class="language-terminal:execute" data-lang="terminal:execute">prefix: Run
-title: Get installed pipelines
-command: kubectl get pipeline
-</code></pre><p>It shows</p>
-<pre tabindex="0"><code>NAME               AGE
-clone-build-push   26m
-</code></pre><p>a single pipeline, with the name clone-build-push</p>
-<p>To see the content of the pileline, open it in the editor</p>
-<pre tabindex="0"><code class="language-editor:open-file" data-lang="editor:open-file">prefix: Editor
-title: Open pipeline.yaml
-file: ~/exercises/tekton/pipeline.yaml
-</code></pre><p>The file should look like this</p>
-<p>TODO: check if file has changed, when the course is finished.</p>
-<pre tabindex="0"><code>apiVersion: tekton.dev/v1beta1
-kind: Pipeline
-metadata:
-  name: clone-build-push
-spec:
-  description: | 
-    This pipeline clones a git repo, builds a Docker image with Kaniko and
-    pushes it to a registry
-  params:
-  - name: repo-url
-    type: string
-  - name: image-reference
-    type: string
-  workspaces:
-  - name: shared-data
-  - name: git-credentials
-    description: My git credentials
-  - name: docker-credentials
-  tasks:
-  - name: fetch-source
-    taskRef:
-      name: git-clone
-    workspaces:
-    - name: output
-      workspace: shared-data
-    - name: basic-auth
-      workspace: git-credentials
-    params:
-    - name: url
-      value: $(params.repo-url)
-  - name: build-push
-    runAfter: [&#34;fetch-source&#34;]
-    taskRef:
-      name: kaniko
-    workspaces:
-    - name: source
-      workspace: shared-data
-    - name: dockerconfig
-      workspace: docker-credentials
-    params:
-    - name: IMAGE
-      value: $(params.image-reference)
-</code></pre><p>The pipeline clones the Git repository, builds the contianer, pushes it to a container registry, and updates and commits the deployment.yaml with the new container image version.</p>
-<pre tabindex="0"><code class="language-terminal:execute" data-lang="terminal:execute">prefix: Run
-title: Create and run pipeline
-command: kubectl create -f /home/eduk8s/exercises/tekton/pipelinerun.yaml
-</code></pre>
+          <p>Dagger cli is already installed in your enviroment.</p>
+<p>The pipelines are all defines in the <code>dagger</code>directory under your <code>app</code> directory.</p>
+<p>For this workshop, we won&rsquo;t setup and pipelines etc. We will just use the ones, that are already created.</p>
+<p>Dagger works by creating functions we can call.</p>
+<p>in <code>app/dagger/src/main/__init__.py</code> you will find the functions, written in Python.</p>
+<p>The code looks like this :</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#f92672">from</span> typing <span style="color:#f92672">import</span> Annotated
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">import</span> dagger
+</span></span><span style="display:flex;"><span><span style="color:#f92672">from</span> dagger <span style="color:#f92672">import</span> Doc, dag, function, object_type
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">@object_type</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">App</span>:
+</span></span><span style="display:flex;"><span>    image_url: str <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;&#34;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">@function</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">build</span>(
+</span></span><span style="display:flex;"><span>        self,
+</span></span><span style="display:flex;"><span>        src: Annotated[
+</span></span><span style="display:flex;"><span>            dagger<span style="color:#f92672">.</span>Directory,
+</span></span><span style="display:flex;"><span>            Doc(<span style="color:#e6db74">&#34;location of directory containing Dockerfile&#34;</span>),
+</span></span><span style="display:flex;"><span>        ],
+</span></span><span style="display:flex;"><span>    ) <span style="color:#f92672">-&gt;</span> str:
+</span></span><span style="display:flex;"><span>        <span style="color:#e6db74">&#34;&#34;&#34;Build and publish image from existing Dockerfile&#34;&#34;&#34;</span>
+</span></span><span style="display:flex;"><span>        image_url <span style="color:#f92672">=</span> (
+</span></span><span style="display:flex;"><span>            dag<span style="color:#f92672">.</span>container()
+</span></span><span style="display:flex;"><span>            <span style="color:#f92672">.</span>with_directory(<span style="color:#e6db74">&#34;/src&#34;</span>, src)
+</span></span><span style="display:flex;"><span>            <span style="color:#f92672">.</span>with_workdir(<span style="color:#e6db74">&#34;/src&#34;</span>)
+</span></span><span style="display:flex;"><span>            <span style="color:#f92672">.</span>directory(<span style="color:#e6db74">&#34;/src&#34;</span>)
+</span></span><span style="display:flex;"><span>            <span style="color:#f92672">.</span>docker_build()  <span style="color:#75715e"># build from Dockerfile</span>
+</span></span><span style="display:flex;"><span>            <span style="color:#f92672">.</span>publish(<span style="color:#e6db74">&#34;ttl.sh/my-shiny-app&#34;</span>)
+</span></span><span style="display:flex;"><span>        )
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> image_url
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">@function</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">update</span>(self, repo: str, branch: str, deploy_filepath: str, image_url: str, git_user: str, git_email: str, git_password: dagger<span style="color:#f92672">.</span>Secret, force_with_lease: bool) <span style="color:#f92672">-&gt;</span> <span style="color:#66d9ef">None</span>:
+</span></span><span style="display:flex;"><span>        <span style="color:#e6db74">&#34;&#34;&#34;Update deployment file, with image name and version&#34;&#34;&#34;</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> (
+</span></span><span style="display:flex;"><span>            dag<span style="color:#f92672">.</span>image_updater()
+</span></span><span style="display:flex;"><span>            <span style="color:#f92672">.</span>update(repo, branch, deploy_filepath, image_url, git_user, git_email, git_password, force_with_lease)
+</span></span><span style="display:flex;"><span>        )
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">@function</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">async</span> <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">deploy</span>(self, src: Annotated[
+</span></span><span style="display:flex;"><span>            dagger<span style="color:#f92672">.</span>Directory,
+</span></span><span style="display:flex;"><span>            Doc(<span style="color:#e6db74">&#34;location of directory containing Dockerfile&#34;</span>),
+</span></span><span style="display:flex;"><span>            ],
+</span></span><span style="display:flex;"><span>            repo: str, 
+</span></span><span style="display:flex;"><span>            branch: str,
+</span></span><span style="display:flex;"><span>            deploy_filepath: str, 
+</span></span><span style="display:flex;"><span>            image_url: str,
+</span></span><span style="display:flex;"><span>            git_user: str, 
+</span></span><span style="display:flex;"><span>            git_email: str, 
+</span></span><span style="display:flex;"><span>            git_password: dagger<span style="color:#f92672">.</span>Secret, 
+</span></span><span style="display:flex;"><span>            force_with_lease: bool) <span style="color:#f92672">-&gt;</span> str:
+</span></span><span style="display:flex;"><span>        
+</span></span><span style="display:flex;"><span>        image_url <span style="color:#f92672">=</span> <span style="color:#66d9ef">await</span>(self<span style="color:#f92672">.</span>build(src))
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">await</span> self<span style="color:#f92672">.</span>update(repo, branch, deploy_filepath, image_url, git_user, git_email, git_password, force_with_lease)
+</span></span><span style="display:flex;"><span>        <span style="color:#e6db74">&#34;&#34;&#34;Create and push container image, and update deployment file, with the new image name and tag&#34;&#34;&#34;</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> image_url
+</span></span></code></pre></div><p>There are 3 functions.</p>
+<ul>
+<li>
+<p>build</p>
+<p>Builds the container, and pushes it to the registry</p>
+</li>
+<li>
+<p>update</p>
+<p>Updated the deployment.yaml file, with the new name and tag of the container image.</p>
+</li>
+<li>
+<p>deploy</p>
+<p>Combines build and update to one job.</p>
+</li>
+</ul>
+
         </div>
         
         <div class="page-meta clearfix">
-          <form action="/workshop/content/exercises/05-app">
+          <form action="/workshop/content/exercises/05-ci-makefile">
             <button class="btn btn-lg btn-primary float-end" id="next-page" type="submit" aria-label="continue">
               Continue </button>
           </form>

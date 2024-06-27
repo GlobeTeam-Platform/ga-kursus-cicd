@@ -1,98 +1,86 @@
 ---
 title: "CI - Setup"
 ---
-Tekton is already installed on your Kubernetes cluster.
+Dagger cli is already installed in your enviroment.
 
-Along with some tasks, and a Pipeline.
+The pipelines are all defines in the `dagger`directory under your `app` directory.
 
-To see the tasks installed run
-```terminal:execute
-prefix: Run
-title: Get installed tasks
-command: kubectl get tasks
-```
-You should see
-```
-NAME        AGE
-git-clone   2m25s
-kaniko      2m25s
-deploy      2m25s
-```
+For this workshop, we won't setup and pipelines etc. We will just use the ones, that are already created.
 
-Git clone, clones a Git Repository, and Kanikp, build a container image, directly on your Kubernetes cluster.
+Dagger works by creating functions we can call.
 
-To see the pipeline run
-```terminal:execute
-prefix: Run
-title: Get installed pipelines
-command: kubectl get pipeline
-```
-It shows
-```
-NAME               AGE
-clone-build-push   26m
-```
-a single pipeline, with the name clone-build-push
+in `app/dagger/src/main/__init__.py` you will find the functions, written in Python.
 
-To see the content of the pileline, open it in the editor
-```editor:open-file
-prefix: Editor
-title: Open pipeline.yaml
-file: ~/exercises/tekton/pipeline.yaml
-```
-The file should look like this
+The code looks like this :
+```python
+from typing import Annotated
 
-TODO: check if file has changed, when the course is finished.
-```
-apiVersion: tekton.dev/v1beta1
-kind: Pipeline
-metadata:
-  name: clone-build-push
-spec:
-  description: | 
-    This pipeline clones a git repo, builds a Docker image with Kaniko and
-    pushes it to a registry
-  params:
-  - name: repo-url
-    type: string
-  - name: image-reference
-    type: string
-  workspaces:
-  - name: shared-data
-  - name: git-credentials
-    description: My git credentials
-  - name: docker-credentials
-  tasks:
-  - name: fetch-source
-    taskRef:
-      name: git-clone
-    workspaces:
-    - name: output
-      workspace: shared-data
-    - name: basic-auth
-      workspace: git-credentials
-    params:
-    - name: url
-      value: $(params.repo-url)
-  - name: build-push
-    runAfter: ["fetch-source"]
-    taskRef:
-      name: kaniko
-    workspaces:
-    - name: source
-      workspace: shared-data
-    - name: dockerconfig
-      workspace: docker-credentials
-    params:
-    - name: IMAGE
-      value: $(params.image-reference)
-```
-
-The pipeline clones the Git repository, builds the contianer, pushes it to a container registry, and updates and commits the deployment.yaml with the new container image version.
+import dagger
+from dagger import Doc, dag, function, object_type
 
 
-```terminal:execute
-prefix: Run
-title: Create and run pipeline
-command: kubectl create -f /home/eduk8s/exercises/tekton/pipelinerun.yaml
+@object_type
+class App:
+    image_url: str = ""
+
+    @function
+    def build(
+        self,
+        src: Annotated[
+            dagger.Directory,
+            Doc("location of directory containing Dockerfile"),
+        ],
+    ) -> str:
+        """Build and publish image from existing Dockerfile"""
+        image_url = (
+            dag.container()
+            .with_directory("/src", src)
+            .with_workdir("/src")
+            .directory("/src")
+            .docker_build()  # build from Dockerfile
+            .publish("ttl.sh/my-shiny-app")
+        )
+        return image_url
+    
+    
+    @function
+    def update(self, repo: str, branch: str, deploy_filepath: str, image_url: str, git_user: str, git_email: str, git_password: dagger.Secret, force_with_lease: bool) -> None:
+        """Update deployment file, with image name and version"""
+        return (
+            dag.image_updater()
+            .update(repo, branch, deploy_filepath, image_url, git_user, git_email, git_password, force_with_lease)
+        )
+
+    @function
+    async def deploy(self, src: Annotated[
+            dagger.Directory,
+            Doc("location of directory containing Dockerfile"),
+            ],
+            repo: str, 
+            branch: str,
+            deploy_filepath: str, 
+            image_url: str,
+            git_user: str, 
+            git_email: str, 
+            git_password: dagger.Secret, 
+            force_with_lease: bool) -> str:
+        
+        image_url = await(self.build(src))
+        await self.update(repo, branch, deploy_filepath, image_url, git_user, git_email, git_password, force_with_lease)
+        """Create and push container image, and update deployment file, with the new image name and tag"""
+        return image_url
 ```
+
+There are 3 functions.
+
+- build
+
+  Builds the container, and pushes it to the registry
+
+- update
+
+  Updated the deployment.yaml file, with the new name and tag of the container image.
+
+- deploy
+
+  Combines build and update to one job.
