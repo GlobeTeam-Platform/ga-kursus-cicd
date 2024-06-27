@@ -12,24 +12,13 @@ ytt -f templates \
   --output-files exercises
 
 # Move files to cleanup env
-mv /home/eduk8s/exercises/tektonui.yaml /home/eduk8s/install/tektonui.yaml
 mv /home/eduk8s/exercises/argocdui.yaml /home/eduk8s/install/argocdui.yaml
 mv /home/eduk8s/exercises/argocd-values.yaml /home/eduk8s/install/argocd-values.yaml
-mv /home/eduk8s/exercises/pipelinerun.yaml /home/eduk8s/exercises/tekton/pipelinerun.yaml
 
-# Install Tekton and modules
+# Install Dagger
 mkdir /home/eduk8s/bin
-tar xf /home/eduk8s/binary/tkn_0.37.0_Linux_x86_64.tar.gz -C /home/eduk8s/bin
-kubectl apply -f /home/eduk8s/install/tekton_pipeline.yaml
-kubectl apply -f /home/eduk8s/install/tekton_dashboard.yaml
-kubectl wait --for=condition=Available deployment/tekton-pipelines-controller -n tekton-pipelines
-kubectl wait --for=condition=Available deployment/tekton-pipelines-remote-resolvers -n tekton-pipelines-resolvers
-kubectl wait --for=condition=Available deployment/tekton-events-controller -n tekton-pipelines
-kubectl wait --for=condition=Available deployment/tekton-pipelines-webhook -n tekton-pipelines
-kubectl apply -f /home/eduk8s/install/tektonui.yaml
-kubectl apply -f /home/eduk8s/install/git-clone.yaml
-kubectl apply -f /home/eduk8s/install/kaniko.yaml
-kubectl apply -f /home/eduk8s/exercises/tekton/pipeline.yaml
+curl -L https://dl.dagger.io/dagger/install.sh | BIN_DIR=/home/eduk8s/bin sh
+dagger install github.com/matipan/daggerverse/image-updater@c3e082566aa7dc6f14de00d1241fceee8798bf3a
 
 # Install ArgoCD etc.
 curl -sLo /home/eduk8s/bin/argocd https://github.com/argoproj/argo-cd/releases/download/v2.11.3/argocd-linux-amd64
@@ -40,3 +29,5 @@ helm install argocd argo/argo-cd \
     --namespace argocd \
     --create-namespace \
     -f /home/eduk8s/install/argocd-values.yaml
+kubectl wait --for=condition=Available deployment/argocd-server -n argocd
+

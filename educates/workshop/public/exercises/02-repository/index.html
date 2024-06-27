@@ -167,15 +167,53 @@
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 <body data-google-tracking-id=''
   data-clarity-tracking-id=''
   data-amplitude-tracking-id='' data-workshop-name='educates-cli--cicd-cf0336d'
-  data-session-namespace='educates-cli-w16-s002' data-workshop-namespace='educates-cli-w16'
+  data-session-namespace='educates-cli-w02-s001' data-workshop-namespace='educates-cli-w02'
   data-training-portal='educates-cli' data-ingress-domain='192.168.50.243.nip.io'
   data-ingress-protocol='http' data-ingress-port-suffix=''
   data-prev-page='exercises/01-flow' data-current-page='exercises/02-repository'
   data-next-page='exercises/03-ci' data-page-format='markdown' data-code-fences='chroma'
-  data-page-step='3' data-pages-total='6'>
+  data-page-step='3' data-pages-total='8'>
 
   
 
@@ -245,7 +283,25 @@
                             
                             
                             <li class="page">
-                                <a href="/workshop/content/exercises/05-app">6: CI - Setup</a>
+                                <a href="/workshop/content/exercises/05-app">6: App</a>
+                            </li>
+                            
+                            
+                            
+                            
+                            
+                            
+                            <li class="page">
+                                <a href="/workshop/content/exercises/06-argocd">7: ArgoCD</a>
+                            </li>
+                            
+                            
+                            
+                            
+                            
+                            
+                            <li class="page">
+                                <a href="/workshop/content/exercises/99-temp">8: Temp</a>
                             </li>
                             
                             
@@ -310,15 +366,21 @@
 <p>We already have all we need in the <code>app</code> folder.</p>
 <p>So all we need is to push this to a Git repository, so we can start working on it.</p>
 <p>This is done, by running the commands below.</p>
-<pre tabindex="0"><code class="language-execute" data-lang="execute">cd app
-git init
-git remote add origin http://$GIT_HOST/myapp.git
-git add .
-git commit -m &#34;first commit&#34;
-git push -u -f origin main
-cd ..
+<pre tabindex="0"><code class="language-terminal:execute" data-lang="terminal:execute">prefix: Run
+title: Add folder to Git Repository
+command: |
+  cd app
+  git init
+  git remote add origin http://$GIT_HOST/myapp.git
+  git add .
+  git commit -m &#34;first commit&#34;
+  git push -u -f origin main
+  cd ..
 </code></pre><p>If you want to see the new source location, then just run</p>
-<pre tabindex="0"><code class="language-execute" data-lang="execute">cat app/.git/config
+<pre tabindex="0"><code class="language-terminal:execute" data-lang="terminal:execute">prefix: Run
+title: Get value from app/.git/config
+command: |
+  cat ~/exercises/app/.git/config
 </code></pre><p>The output should be</p>
 <pre tabindex="0"><code>[core]
         repositoryformatversion = 0
@@ -332,7 +394,7 @@ cd ..
         remote = origin
         merge = refs/heads/main
 </code></pre><p>Where the <code>Remote Origin Url</code> is the path to your new repository.</p>
-<p>Note yours will probably have a different url.</p>
+<p>Note yours will have a different url.</p>
 
         </div>
         

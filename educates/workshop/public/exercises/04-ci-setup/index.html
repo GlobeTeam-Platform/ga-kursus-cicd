@@ -167,15 +167,53 @@
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 <body data-google-tracking-id=''
   data-clarity-tracking-id=''
   data-amplitude-tracking-id='' data-workshop-name='educates-cli--cicd-cf0336d'
-  data-session-namespace='educates-cli-w16-s002' data-workshop-namespace='educates-cli-w16'
+  data-session-namespace='educates-cli-w02-s001' data-workshop-namespace='educates-cli-w02'
   data-training-portal='educates-cli' data-ingress-domain='192.168.50.243.nip.io'
   data-ingress-protocol='http' data-ingress-port-suffix=''
   data-prev-page='exercises/03-ci' data-current-page='exercises/04-ci-setup'
   data-next-page='exercises/05-app' data-page-format='markdown' data-code-fences='chroma'
-  data-page-step='5' data-pages-total='6'>
+  data-page-step='5' data-pages-total='8'>
 
   
 
@@ -245,7 +283,25 @@
                             
                             
                             <li class="page">
-                                <a href="/workshop/content/exercises/05-app">6: CI - Setup</a>
+                                <a href="/workshop/content/exercises/05-app">6: App</a>
+                            </li>
+                            
+                            
+                            
+                            
+                            
+                            
+                            <li class="page">
+                                <a href="/workshop/content/exercises/06-argocd">7: ArgoCD</a>
+                            </li>
+                            
+                            
+                            
+                            
+                            
+                            
+                            <li class="page">
+                                <a href="/workshop/content/exercises/99-temp">8: Temp</a>
                             </li>
                             
                             
@@ -309,20 +365,26 @@
           <p>Tekton is already installed on your Kubernetes cluster.</p>
 <p>Along with some tasks, and a Pipeline.</p>
 <p>To see the tasks installed run</p>
-<pre tabindex="0"><code class="language-execute" data-lang="execute">kubectl get tasks
+<pre tabindex="0"><code class="language-terminal:execute" data-lang="terminal:execute">prefix: Run
+title: Get installed tasks
+command: kubectl get tasks
 </code></pre><p>You should see</p>
 <pre tabindex="0"><code>NAME        AGE
-git-clone   24m
-kaniko      24m
+git-clone   2m25s
+kaniko      2m25s
+deploy      2m25s
 </code></pre><p>Git clone, clones a Git Repository, and Kanikp, build a container image, directly on your Kubernetes cluster.</p>
 <p>To see the pipeline run</p>
-<pre tabindex="0"><code class="language-execute" data-lang="execute">kubectl get pipeline
+<pre tabindex="0"><code class="language-terminal:execute" data-lang="terminal:execute">prefix: Run
+title: Get installed pipelines
+command: kubectl get pipeline
 </code></pre><p>It shows</p>
 <pre tabindex="0"><code>NAME               AGE
 clone-build-push   26m
 </code></pre><p>a single pipeline, with the name clone-build-push</p>
 <p>To see the content of the pileline, open it in the editor</p>
-<pre tabindex="0"><code class="language-editor:open-file" data-lang="editor:open-file">title: Open pipeline.yaml
+<pre tabindex="0"><code class="language-editor:open-file" data-lang="editor:open-file">prefix: Editor
+title: Open pipeline.yaml
 file: ~/exercises/tekton/pipeline.yaml
 </code></pre><p>The file should look like this</p>
 <p>TODO: check if file has changed, when the course is finished.</p>
@@ -369,7 +431,9 @@ spec:
     - name: IMAGE
       value: $(params.image-reference)
 </code></pre><p>The pipeline clones the Git repository, builds the contianer, pushes it to a container registry, and updates and commits the deployment.yaml with the new container image version.</p>
-<pre tabindex="0"><code class="language-execute" data-lang="execute">kubectl create -f /home/eduk8s/exercises/tekton/pipelinerun.yaml
+<pre tabindex="0"><code class="language-terminal:execute" data-lang="terminal:execute">prefix: Run
+title: Create and run pipeline
+command: kubectl create -f /home/eduk8s/exercises/tekton/pipelinerun.yaml
 </code></pre>
         </div>
         

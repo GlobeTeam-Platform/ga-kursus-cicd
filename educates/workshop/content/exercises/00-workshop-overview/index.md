@@ -5,10 +5,9 @@ Welcome to CICD fundamentals
 
 In this workshop you will learn about
 
-- What is Continius Integrations
-- What is Continius Delivery
-- How do you use it ?
+- What is Continius Integrations (CI)
+- What is Continius Delivery (CD)
+- How to use it ?
 - How to automate building applications and delivering them to Kubernetes
-
 
 ![CICD](cicd.svg)

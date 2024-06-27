@@ -6,21 +6,26 @@ Tekton is already installed on your Kubernetes cluster.
 Along with some tasks, and a Pipeline.
 
 To see the tasks installed run
-```execute
-kubectl get tasks
+```terminal:execute
+prefix: Run
+title: Get installed tasks
+command: kubectl get tasks
 ```
 You should see
 ```
 NAME        AGE
-git-clone   24m
-kaniko      24m
+git-clone   2m25s
+kaniko      2m25s
+deploy      2m25s
 ```
 
 Git clone, clones a Git Repository, and Kanikp, build a container image, directly on your Kubernetes cluster.
 
 To see the pipeline run
-```execute
-kubectl get pipeline
+```terminal:execute
+prefix: Run
+title: Get installed pipelines
+command: kubectl get pipeline
 ```
 It shows
 ```
@@ -31,6 +36,7 @@ a single pipeline, with the name clone-build-push
 
 To see the content of the pileline, open it in the editor
 ```editor:open-file
+prefix: Editor
 title: Open pipeline.yaml
 file: ~/exercises/tekton/pipeline.yaml
 ```
@@ -85,6 +91,8 @@ spec:
 The pipeline clones the Git repository, builds the contianer, pushes it to a container registry, and updates and commits the deployment.yaml with the new container image version.
 
 
-```execute
-kubectl create -f /home/eduk8s/exercises/tekton/pipelinerun.yaml
+```terminal:execute
+prefix: Run
+title: Create and run pipeline
+command: kubectl create -f /home/eduk8s/exercises/tekton/pipelinerun.yaml
 ```

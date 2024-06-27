@@ -9,19 +9,25 @@ So all we need is to push this to a Git repository, so we can start working on i
 
 This is done, by running the commands below.
 
-```execute
-cd app
-git init
-git remote add origin http://$GIT_HOST/myapp.git
-git add .
-git commit -m "first commit"
-git push -u -f origin main
-cd ..
+```terminal:execute
+prefix: Run
+title: Add folder to Git Repository
+command: |
+  cd app
+  git init
+  git remote add origin http://$GIT_HOST/myapp.git
+  git add .
+  git commit -m "first commit"
+  git push -u -f origin main
+  cd ..
 ```
 
 If you want to see the new source location, then just run
-```execute
-cat app/.git/config
+```terminal:execute
+prefix: Run
+title: Get value from app/.git/config
+command: |
+  cat ~/exercises/app/.git/config
 ```
 
 The output should be
@@ -41,7 +47,4 @@ The output should be
 
 Where the `Remote Origin Url` is the path to your new repository.
 
-Note yours will probably have a different url.
-
-
-
+Note yours will have a different url.

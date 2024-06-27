@@ -1,0 +1,22 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: my-shiny-app
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: my-shiny-app
+  template:
+    metadata:
+      labels:
+        app: my-shiny-app
+    spec:
+      containers:
+      - name: my-shiny-app
+        image: ttl.sh/my-shiny-app@sha256:64c25a8a577c5a6bf0fe6b2f6df3fd2e1a5ba576aa7f9b1d6dd2650a3fe5b015
+        ports:
+        - containerPort: 80
+        env:
+          - name: SHINY_PORT
+            value: "80"

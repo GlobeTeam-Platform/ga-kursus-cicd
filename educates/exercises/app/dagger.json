@@ -1,0 +1,12 @@
+{
+  "name": "app",
+  "sdk": "python",
+  "dependencies": [
+    {
+      "name": "image-updater",
+      "source": "github.com/matipan/daggerverse/image-updater@c3e082566aa7dc6f14de00d1241fceee8798bf3a"
+    }
+  ],
+  "source": "dagger",
+  "engineVersion": "v0.11.8"
+}

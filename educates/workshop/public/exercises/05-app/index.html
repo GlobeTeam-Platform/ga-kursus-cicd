@@ -167,15 +167,53 @@
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 <body data-google-tracking-id=''
   data-clarity-tracking-id=''
   data-amplitude-tracking-id='' data-workshop-name='educates-cli--cicd-cf0336d'
-  data-session-namespace='educates-cli-w16-s002' data-workshop-namespace='educates-cli-w16'
+  data-session-namespace='educates-cli-w02-s001' data-workshop-namespace='educates-cli-w02'
   data-training-portal='educates-cli' data-ingress-domain='192.168.50.243.nip.io'
   data-ingress-protocol='http' data-ingress-port-suffix=''
   data-prev-page='exercises/04-ci-setup' data-current-page='exercises/05-app'
-  data-next-page='' data-page-format='markdown' data-code-fences='chroma'
-  data-page-step='6' data-pages-total='6'>
+  data-next-page='exercises/06-argocd' data-page-format='markdown' data-code-fences='chroma'
+  data-page-step='6' data-pages-total='8'>
 
   
 
@@ -245,7 +283,25 @@
                             
                             
                             <li class="page active">
-                                <a href="/workshop/content/exercises/05-app">6: CI - Setup</a>
+                                <a href="/workshop/content/exercises/05-app">6: App</a>
+                            </li>
+                            
+                            
+                            
+                            
+                            
+                            
+                            <li class="page">
+                                <a href="/workshop/content/exercises/06-argocd">7: ArgoCD</a>
+                            </li>
+                            
+                            
+                            
+                            
+                            
+                            
+                            <li class="page">
+                                <a href="/workshop/content/exercises/99-temp">8: Temp</a>
                             </li>
                             
                             
@@ -280,8 +336,8 @@
                             data-bs-toggle="modal" data-bs-target="#table-of-contents"><span class="fas fa-list fa-inverse"
                                 aria-hidden="true"></span></button>
                     </form>
-                    <form action="/workshop/content/">
-                        <button class="btn btn-transparent" id="header-next-page" type="submit" disabled=""  aria-label="Next"><span
+                    <form action="/workshop/content/exercises/06-argocd">
+                        <button class="btn btn-transparent" id="header-next-page" type="submit"  aria-label="Next"><span
                                 class="fas fa-arrow-right fa-inverse" aria-hidden="true"></span></button>
                     </form>
                 </div>
@@ -303,81 +359,19 @@
         
         
         
-        <h1 class="title" id="title">6: CI - Setup</h1>
+        <h1 class="title" id="title">6: App</h1>
         
         <div class="rendered-content">
-          <p>Tekton is already installed on your Kubernetes cluster.</p>
-<p>Along with some tasks, and a Pipeline.</p>
-<p>To see the tasks installed run</p>
-<pre tabindex="0"><code class="language-execute" data-lang="execute">kubectl get tasks
-</code></pre><p>You should see</p>
-<pre tabindex="0"><code>NAME        AGE
-git-clone   24m
-kaniko      24m
-</code></pre><p>Git clone, clones a Git Repository, and Kanikp, build a container image, directly on your Kubernetes cluster.</p>
-<p>To see the pipeline run</p>
-<pre tabindex="0"><code class="language-execute" data-lang="execute">kubectl get pipeline
-</code></pre><p>It shows</p>
-<pre tabindex="0"><code>NAME               AGE
-clone-build-push   26m
-</code></pre><p>a single pipeline, with the name clone-build-push</p>
-<p>To see the content of the pileline, open it in the editor</p>
-<pre tabindex="0"><code class="language-editor:open-file" data-lang="editor:open-file">title: Open pipeline.yaml
-file: ~/exercises/tekton/pipeline.yaml
-</code></pre><p>The file should look like this</p>
-<p>TODO: check if file has changed, when the course is finished.</p>
-<pre tabindex="0"><code>apiVersion: tekton.dev/v1beta1
-kind: Pipeline
-metadata:
-  name: clone-build-push
-spec:
-  description: | 
-    This pipeline clones a git repo, builds a Docker image with Kaniko and
-    pushes it to a registry
-  params:
-  - name: repo-url
-    type: string
-  - name: image-reference
-    type: string
-  workspaces:
-  - name: shared-data
-  - name: git-credentials
-    description: My git credentials
-  - name: docker-credentials
-  tasks:
-  - name: fetch-source
-    taskRef:
-      name: git-clone
-    workspaces:
-    - name: output
-      workspace: shared-data
-    - name: basic-auth
-      workspace: git-credentials
-    params:
-    - name: url
-      value: $(params.repo-url)
-  - name: build-push
-    runAfter: [&#34;fetch-source&#34;]
-    taskRef:
-      name: kaniko
-    workspaces:
-    - name: source
-      workspace: shared-data
-    - name: dockerconfig
-      workspace: docker-credentials
-    params:
-    - name: IMAGE
-      value: $(params.image-reference)
-</code></pre><p>TODO: Add text about the pipeline file.</p>
-<pre tabindex="0"><code class="language-execute" data-lang="execute">kubectl create -f /home/eduk8s/exercises/tekton/pipelinerun.yaml
-</code></pre>
+          <p>The app we will be using today, is a simple one page website.</p>
+<p>It&rsquo;s located in the <code>app</code> folder, under <code>html</code> and there is also a Dockerfile, that we use to package the app.</p>
+<p>TODO: More content</p>
+
         </div>
         
         <div class="page-meta clearfix">
-          <form>
-            <button class="btn btn-lg btn-primary float-end" id="next-page" type="button" aria-label="finish"
-              onclick="educates.finished_workshop()">
-              Finish Workshop </button>
+          <form action="/workshop/content/exercises/06-argocd">
+            <button class="btn btn-lg btn-primary float-end" id="next-page" type="submit" aria-label="continue">
+              Continue </button>
           </form>
         </div>
         

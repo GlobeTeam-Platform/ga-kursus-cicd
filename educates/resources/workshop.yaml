@@ -27,7 +27,6 @@ spec:
       - /workshop/**
       - /exercises/**
       - /templates/**
-      - /binary/**
       - /install/**
       - /README.md
   session:
@@ -87,7 +86,7 @@ spec:
     dashboards:
     - name: ArgoCD
       url: "$(ingress_protocol)://argocd-$(session_name).$(ingress_domain)"
-    - name: Tekton
-      url: "$(ingress_protocol)://tekton-$(session_name).$(ingress_domain)"
+    #- name: Tekton
+    #  url: "$(ingress_protocol)://tekton-$(session_name).$(ingress_domain)"
 
 
