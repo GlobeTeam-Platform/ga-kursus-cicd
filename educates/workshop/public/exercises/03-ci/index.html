@@ -224,6 +224,25 @@
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 <body data-google-tracking-id=''
   data-clarity-tracking-id=''
   data-amplitude-tracking-id='' data-workshop-name='educates-cli--cicd-cf0336d'
@@ -232,7 +251,7 @@
   data-ingress-protocol='http' data-ingress-port-suffix=''
   data-prev-page='exercises/02-repository' data-current-page='exercises/03-ci'
   data-next-page='exercises/04-ci-setup' data-page-format='markdown' data-code-fences='chroma'
-  data-page-step='4' data-pages-total='9'>
+  data-page-step='4' data-pages-total='10'>
 
   
 
@@ -329,7 +348,16 @@
                             
                             
                             <li class="page">
-                                <a href="/workshop/content/exercises/99-temp">9: Temp</a>
+                                <a href="/workshop/content/exercises/08-cd-setup">9: CD Setup</a>
+                            </li>
+                            
+                            
+                            
+                            
+                            
+                            
+                            <li class="page">
+                                <a href="/workshop/content/exercises/99-temp">10: Temp</a>
                             </li>
                             
                             
@@ -396,8 +424,7 @@ For this workshop, we are using <a href="https://dagger.io">Dagger</a> as our CI
 <p>Dagger works by creating pipelines as code, and running it in containers.</p>
 <p>It&rsquo;s big strength is that you can run and test it local and remote, and get the same results.</p>
 <p>This is usefull in our enviroment, where we have some restrictions, compared to a &ldquo;real&rdquo; enviroment.</p>
-<p>We will be using it to pull from your Git Repository, build a container image, and then push this container image, to your registry, and update your deployment manifest.</p>
-<p>The green boxes show in the picture.</p>
+<p>We will be using it to build a container from our local Git Repository, and then push this container image, to our registry, and update our deployment manifest, in our remote git repository.</p>
 <p><img src="flow.png" alt="flow"></p>
 <p>Note we have chosen to split up CI and CD, so that Dagger handles CI and ArgoCD handles CD.</p>
 <hr>

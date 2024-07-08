@@ -16,6 +16,7 @@ ytt -f templates \
 # Move files to cleanup env
 mv /home/eduk8s/exercises/argocdui.yaml /home/eduk8s/install/argocdui.yaml
 mv /home/eduk8s/exercises/argocd-values.yaml /home/eduk8s/install/argocd-values.yaml
+mv /home/eduk8s/exercises/ingress.yaml /home/eduk8s/exercises/app/k8s/ingress.yaml
 
 # Install Dagger
 mkdir /home/eduk8s/bin

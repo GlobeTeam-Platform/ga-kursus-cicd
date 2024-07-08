@@ -3,7 +3,7 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: my-shiny-app
+  name: my-awesome-app
   namespace: argocd
 spec:
   project: default

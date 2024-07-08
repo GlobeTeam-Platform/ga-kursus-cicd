@@ -224,6 +224,25 @@
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 <body data-google-tracking-id=''
   data-clarity-tracking-id=''
   data-amplitude-tracking-id='' data-workshop-name='educates-cli--cicd-cf0336d'
@@ -232,7 +251,7 @@
   data-ingress-protocol='http' data-ingress-port-suffix=''
   data-prev-page='exercises/03-ci' data-current-page='exercises/04-ci-setup'
   data-next-page='exercises/05-ci-makefile' data-page-format='markdown' data-code-fences='chroma'
-  data-page-step='5' data-pages-total='9'>
+  data-page-step='5' data-pages-total='10'>
 
   
 
@@ -329,7 +348,16 @@
                             
                             
                             <li class="page">
-                                <a href="/workshop/content/exercises/99-temp">9: Temp</a>
+                                <a href="/workshop/content/exercises/08-cd-setup">9: CD Setup</a>
+                            </li>
+                            
+                            
+                            
+                            
+                            
+                            
+                            <li class="page">
+                                <a href="/workshop/content/exercises/99-temp">10: Temp</a>
                             </li>
                             
                             
@@ -391,7 +419,7 @@
         
         <div class="rendered-content">
           <p>Dagger cli is already installed in your enviroment.</p>
-<p>The pipelines are all defines in the <code>dagger</code>directory under your <code>app</code> directory.</p>
+<p>The pipelines are all defines in the <code>dagger</code> directory under your <code>app</code> directory.</p>
 <p>For this workshop, we won&rsquo;t setup and pipelines etc. We will just use the ones, that are already created.</p>
 <p>Dagger works by creating functions we can call.</p>
 <p>in <code>app/dagger/src/main/__init__.py</code> you will find the functions, written in Python.</p>
@@ -421,7 +449,7 @@
 </span></span><span style="display:flex;"><span>            <span style="color:#f92672">.</span>with_workdir(<span style="color:#e6db74">&#34;/src&#34;</span>)
 </span></span><span style="display:flex;"><span>            <span style="color:#f92672">.</span>directory(<span style="color:#e6db74">&#34;/src&#34;</span>)
 </span></span><span style="display:flex;"><span>            <span style="color:#f92672">.</span>docker_build()  <span style="color:#75715e"># build from Dockerfile</span>
-</span></span><span style="display:flex;"><span>            <span style="color:#f92672">.</span>publish(<span style="color:#e6db74">&#34;ttl.sh/my-shiny-app&#34;</span>)
+</span></span><span style="display:flex;"><span>            <span style="color:#f92672">.</span>publish(<span style="color:#e6db74">&#34;ttl.sh/my-awesome-app&#34;</span>)
 </span></span><span style="display:flex;"><span>        )
 </span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> image_url
 </span></span><span style="display:flex;"><span>    
@@ -467,6 +495,7 @@
 <p>Combines build and update to one job.</p>
 </li>
 </ul>
+<p>In the next session, we will see how to run them.</p>
 
         </div>
         

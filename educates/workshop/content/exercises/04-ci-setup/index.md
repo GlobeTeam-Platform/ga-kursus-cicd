@@ -38,7 +38,7 @@ class App:
             .with_workdir("/src")
             .directory("/src")
             .docker_build()  # build from Dockerfile
-            .publish("ttl.sh/my-shiny-app")
+            .publish("ttl.sh/my-awesome-app")
         )
         return image_url
     

@@ -79,13 +79,15 @@ spec:
           secrets:
             - name: docker-secret
     #ingresses:
-    #- name: application
+    #- name: app
     #  protocol: http
-    #  host: nginx-deployment.$(session_namespace).svc.$(cluster_domain)
-    #  port: 8080
+    #  host: my-awesome-app.$(session_namespace).svc.$(cluster_domain)
+    #  port: 80
     dashboards:
     - name: ArgoCD
       url: "$(ingress_protocol)://argocd-$(session_name).$(ingress_domain)"
+    - name: my-awesome-app
+      url: "$(ingress_protocol)://my-awesome-app-$(session_name).$(ingress_domain)"
     #- name: Tekton
     #  url: "$(ingress_protocol)://tekton-$(session_name).$(ingress_domain)"
 

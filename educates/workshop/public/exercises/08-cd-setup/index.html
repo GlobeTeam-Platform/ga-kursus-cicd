@@ -249,9 +249,9 @@
   data-session-namespace='educates-cli-w04-s001' data-workshop-namespace='educates-cli-w04'
   data-training-portal='educates-cli' data-ingress-domain='192.168.50.243.nip.io'
   data-ingress-protocol='http' data-ingress-port-suffix=''
-  data-prev-page='exercises/04-ci-setup' data-current-page='exercises/05-ci-makefile'
-  data-next-page='exercises/06-app' data-page-format='markdown' data-code-fences='chroma'
-  data-page-step='6' data-pages-total='10'>
+  data-prev-page='exercises/07-argocd' data-current-page='exercises/08-cd-setup'
+  data-next-page='exercises/99-temp' data-page-format='markdown' data-code-fences='chroma'
+  data-page-step='9' data-pages-total='10'>
 
   
 
@@ -320,7 +320,7 @@
                             
                             
                             
-                            <li class="page active">
+                            <li class="page">
                                 <a href="/workshop/content/exercises/05-ci-makefile">6: CI - Makefile</a>
                             </li>
                             
@@ -347,7 +347,7 @@
                             
                             
                             
-                            <li class="page">
+                            <li class="page active">
                                 <a href="/workshop/content/exercises/08-cd-setup">9: CD Setup</a>
                             </li>
                             
@@ -383,7 +383,7 @@
             </div>
             <div class="btn-toolbar float-end" role="toolbar">
                 <div class="btn-group btn-group-sm" role="group">
-                    <form action="/workshop/content/exercises/04-ci-setup">
+                    <form action="/workshop/content/exercises/07-argocd">
                         <button class="btn btn-transparent" id="header-prev-page" type="submit"  aria-label="Prev"><span
                                 class="fas fa-arrow-left fa-inverse" aria-hidden="true"></span></button>
                     </form>
@@ -392,7 +392,7 @@
                             data-bs-toggle="modal" data-bs-target="#table-of-contents"><span class="fas fa-list fa-inverse"
                                 aria-hidden="true"></span></button>
                     </form>
-                    <form action="/workshop/content/exercises/06-app">
+                    <form action="/workshop/content/exercises/99-temp">
                         <button class="btn btn-transparent" id="header-next-page" type="submit"  aria-label="Next"><span
                                 class="fas fa-arrow-right fa-inverse" aria-hidden="true"></span></button>
                     </form>
@@ -415,55 +415,89 @@
         
         
         
-        <h1 class="title" id="title">6: CI - Makefile</h1>
+        <h1 class="title" id="title">9: CD Setup</h1>
         
         <div class="rendered-content">
-          <p>To run the pipelines/functions we need to use the dagger cli, with a lot of options, for the variable inputs, that each functions requires.</p>
-<p>To make this easier, we are utilizing <a href="https://www.gnu.org/software/make/">Makefiles</a>.</p>
-<p>Makefiles is a simple way, of automation commands, jobs etc.</p>
-<p>They simply require you to have make installed, and to have a <code>Makefile</code> in the current directory.</p>
-<p>Our Makefile looks like this, and is located in the app folder.</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-yaml" data-lang="yaml"><span style="display:flex;"><span><span style="color:#f92672">build</span>:
-</span></span><span style="display:flex;"><span>	@<span style="color:#ae81ff">dagger call build --src=.</span>
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#f92672">update</span>:
-</span></span><span style="display:flex;"><span>	@<span style="color:#ae81ff">dagger call update \</span>
-</span></span><span style="display:flex;"><span>		--<span style="color:#ae81ff">branch=main \</span>
-</span></span><span style="display:flex;"><span>		--<span style="color:#ae81ff">git-user=${GIT_USERNAME} \</span>
-</span></span><span style="display:flex;"><span>		--<span style="color:#ae81ff">repo=http://${GIT_HOST}/myapp.git \</span>
-</span></span><span style="display:flex;"><span>		--<span style="color:#ae81ff">git-email=${GIT_USERNAME}@git.educates.dev \</span>
-</span></span><span style="display:flex;"><span>		--<span style="color:#ae81ff">deploy_filepath=deployment.yaml \</span>
-</span></span><span style="display:flex;"><span>		--<span style="color:#ae81ff">forceWithLease=true \</span>
-</span></span><span style="display:flex;"><span>		--<span style="color:#ae81ff">image-url=xxx:xxx \</span>
-</span></span><span style="display:flex;"><span>		--<span style="color:#ae81ff">git_password=env:GIT_PASSWORD \</span>
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#f92672">deploy</span>:
-</span></span><span style="display:flex;"><span>	@<span style="color:#ae81ff">dagger call deploy \</span>
-</span></span><span style="display:flex;"><span>		--<span style="color:#ae81ff">branch=main \</span>
-</span></span><span style="display:flex;"><span>		--<span style="color:#ae81ff">git-user=${GIT_USERNAME} \</span>
-</span></span><span style="display:flex;"><span>		--<span style="color:#ae81ff">repo=http://${GIT_HOST}/myapp.git \</span>
-</span></span><span style="display:flex;"><span>		--<span style="color:#ae81ff">git-email=${GIT_USERNAME}@git.educates.dev \</span>
-</span></span><span style="display:flex;"><span>		--<span style="color:#ae81ff">deploy_filepath=deployment.yaml \</span>
-</span></span><span style="display:flex;"><span>		--<span style="color:#ae81ff">forceWithLease=true \</span>
-</span></span><span style="display:flex;"><span>		--<span style="color:#ae81ff">image-url=xxx:xxx \</span>
-</span></span><span style="display:flex;"><span>		--<span style="color:#ae81ff">git_password=env:GIT_PASSWORD \</span>
-</span></span><span style="display:flex;"><span>		--<span style="color:#ae81ff">src=.</span>
-</span></span></code></pre></div><p>You can see that it runs the same Dagger calls, as in our previus step, and then adds a lot of different variables, that we need pipeline.</p>
-<p>Using makefiles, is a lot easier, than remembering the correct syntax for a command or a job, and you will often find them in the root, of projects, on Github etc.</p>
-<p>Let&rsquo;s open the app folder, and run the <code>make deploy</code> command, in terminal 2, to test it.</p>
-<pre tabindex="0"><code class="language-execute-2" data-lang="execute-2">  cd ~/exercises/app
-  make deploy
-</code></pre><p>Note it might take some time, the first time you run it, since Dagger needs to download the containers, and run the build inside them</p>
-<p>The output should be something like this</p>
-<pre tabindex="0"><code>ttl.sh/educates-cli-w04-s001@sha256:b1631c8050f8dddb15ad1129e50cb9bc5f7811bcd446b122fa72c15c82356124
-</code></pre><p>This means that our container has been build, and has been pushed to the registry ttl.sh with our username for name, and the sha for label, and that url, has been updated in the deployment yaml files.</p>
-<p>This is usefull, since we can point our deoployment directly, to this specific container and id, when we deploy it.</p>
-<p>More on that later.</p>
-
+          <p>Now that we got ArgoCD working, let&rsquo;s setup the CD, so we can start to deploy our app.</p>
+<p>The first thing we need to do, is to give ArgoCD access to our git repository.</p>
+<p>It can be done usig UI, CLI or yaml.</p>
+<p>We will chose the last one.</p>
+<p>Take a look at the argocd-repo.yaml file you have in your exercise folder.</p>
+<pre tabindex="0"><code class="language-editor:open-file" data-lang="editor:open-file">title: Open argocd-repo.yaml
+file: ~/exercises/argocd-repo.yaml
+</code></pre><p>It should look something like this</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-yaml" data-lang="yaml"><span style="display:flex;"><span><span style="color:#f92672">apiVersion</span>: <span style="color:#ae81ff">v1</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">kind</span>: <span style="color:#ae81ff">Secret</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">metadata</span>:
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">name</span>: <span style="color:#ae81ff">my-repo</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">namespace</span>: <span style="color:#ae81ff">argocd</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">labels</span>:
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">argocd.argoproj.io/secret-type</span>: <span style="color:#ae81ff">repository</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">stringData</span>:
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">type</span>: <span style="color:#ae81ff">git</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">url</span>: <span style="color:#ae81ff">http://git-educates-cli-w05-s003.192.168.50.243.nip.io/myapp.git</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">password</span>: <span style="color:#ae81ff">IXcklS71Ag85ULYDhPFt6zpMwvnqWema</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">username</span>: <span style="color:#ae81ff">educates-cli-w05-s003</span>
+</span></span></code></pre></div><p>All it does, is to tell ArgoCD that if it want&rsquo;s to connect to the url under Stringdata (our git repo), then it need to use the suplied username and password.</p>
+<p>Quite simple</p>
+<p>This can also be done, for other types of repositories, where you need SSH keys etc. to access them.</p>
+<p>Let&rsquo;s apply the yaml file</p>
+<pre tabindex="0"><code class="language-terminal:execute" data-lang="terminal:execute">command: |
+  kubectl apply -f ~/exercises/argocd-repo.yaml
+</code></pre><p>We can verify it, by opening th ArgoCD UI, selecting settings -&gt; Repositories and seeing our git repo has been added and is saying &ldquo;successful&rdquo;
+<img src="git_repo.png" alt="git_repo"></p>
+<p>Now that we can access the Git repository, we will add the app configuration.</p>
+<p>Start by opening the app configuration.</p>
+<pre tabindex="0"><code class="language-editor:open-file" data-lang="editor:open-file">title: Open argocd-app.yaml
+file: ~/exercises/argocd-app.yaml
+</code></pre><p>The file looks something like this</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-yaml" data-lang="yaml"><span style="display:flex;"><span><span style="color:#f92672">apiVersion</span>: <span style="color:#ae81ff">argoproj.io/v1alpha1</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">kind</span>: <span style="color:#ae81ff">Application</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">metadata</span>:
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">name</span>: <span style="color:#ae81ff">my-awesome-app</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">namespace</span>: <span style="color:#ae81ff">argocd</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">spec</span>:
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">project</span>: <span style="color:#ae81ff">default</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">source</span>:
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">repoURL</span>: <span style="color:#ae81ff">http://git-educates-cli-w04-s001.192.168.50.243.nip.io/myapp.git</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">targetRevision</span>: <span style="color:#ae81ff">HEAD</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">path</span>: <span style="color:#ae81ff">k8s</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">destination</span>:
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">server</span>: <span style="color:#ae81ff">https://kubernetes.default.svc</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">namespace</span>: <span style="color:#ae81ff">default</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">syncPolicy</span>:
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">automated</span>:
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">prune</span>: <span style="color:#66d9ef">true</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">selfHeal</span>: <span style="color:#66d9ef">true</span>
+</span></span></code></pre></div><p>It contains, all the info that ArgoCD need, to know, to be able to deploy the app.</p>
+<p>This means :</p>
+<ul>
+<li>Git Repo</li>
+<li>Path in that repo, for the config files (ours is in the k8s folder, in the app folder)</li>
+<li>Namespace to deploy to</li>
+<li>Destination server (ArgoCD can handle multiple Kubernetes servers if needed)</li>
+<li>And how to deploy it (shoud it clean up, auto heal etc.)</li>
+</ul>
+<p>Let&rsquo;s apply it as well.</p>
+<pre tabindex="0"><code class="language-terminal:execute" data-lang="terminal:execute">command: |
+  kubectl apply -f ~/exercises/argocd-app.yaml
+</code></pre><p>Open the ArgoCD UI, and see a new app has been created.
+<img src="app.png" alt="app"></p>
+<p>If you click on it, then you will see an overview, of all the componments it contains.
+<img src="overview.png" alt="overview"></p>
+<p>Depending on your screen resolution, it might be a bit small.</p>
+<p>Use the zoom buttons, to make it fit.</p>
+<p>ArgoCD now manages our application, and checks every 3 minutes, for changes in Git, and if there is any, it will update the application accordingly.</p>
+<p>To see your app, open the &ldquo;my-awesome-app&rdquo; tab:</p>
+<pre tabindex="0"><code class="language-dashboard:reload-dashboard" data-lang="dashboard:reload-dashboard">prefix: Open
+title: my-awesome-app
+name: my-awesome-app
+url: http://my-awesome-app-educates-cli-w04-s001.192.168.50.243.nip.io
+</code></pre>
         </div>
         
         <div class="page-meta clearfix">
-          <form action="/workshop/content/exercises/06-app">
+          <form action="/workshop/content/exercises/99-temp">
             <button class="btn btn-lg btn-primary float-end" id="next-page" type="submit" aria-label="continue">
               Continue </button>
           </form>

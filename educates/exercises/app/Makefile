@@ -1,5 +1,6 @@
 build:
-	@dagger call build --src=.
+	@dagger call build --src=. \
+		--git-user=${GIT_USERNAME}
 
 update:
 	@dagger call update \
