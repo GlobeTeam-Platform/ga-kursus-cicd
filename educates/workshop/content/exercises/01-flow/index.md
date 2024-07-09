@@ -4,7 +4,7 @@ title: "Flow"
 
 The flow we will be going thru today, looks like this.
 
-It's split up, into Continius Integration (CI) and Continius Delivery (CD), with Git in the Center as the "Source of truth"
+It's split up, into Continuous Integrations (CI) and Continuous Delivery (CD), with Git in the Center as the "Source of truth"
 
 ![Flow](flow.png)
 

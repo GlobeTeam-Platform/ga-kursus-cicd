@@ -19,7 +19,7 @@
       <link>http://localhost:1313/workshop/content/exercises/07-argocd/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>http://localhost:1313/workshop/content/exercises/07-argocd/</guid>
-      <description>For CD (Continus Deployment) we will be using ArgoCD.&#xA;ArgoCD is one of the major solutions for doing CD.&#xA;It&amp;rsquo;s often compared with Flux and both products have a lot of overlapping features.&#xA;One of the major reasons for using Argo in this workshop, over Flux, is that ArgoCD has a nice UI, where we can see the changes that we are doing.&#xA;ArgoCD is already installed, but to access it, we first need to get a password.</description>
+      <description>For CD (Continus Deployment) we will be using ArgoCD.&#xA;ArgoCD is one of the major solutions for doing CD.&#xA;It&amp;rsquo;s often compared with Flux and both products have a lot of overlapping features.&#xA;One of the major reasons for using Argo in this workshop, is that ArgoCD has a nice UI, where we can see the changes that we are doing.&#xA;ArgoCD is already installed, in our Kubernetes cluster, but to access it, we first need to get a password.</description>
     </item>
     <item>
       <title>CD Setup</title>
@@ -40,42 +40,56 @@
       <link>http://localhost:1313/workshop/content/exercises/05-ci-makefile/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>http://localhost:1313/workshop/content/exercises/05-ci-makefile/</guid>
-      <description>To run the pipelines/functions we need to use the dagger cli, with a lot of options, for the variable inputs, that each functions requires.&#xA;To make this easier, we are utilizing Makefiles.&#xA;Makefiles is a simple way, of automation commands, jobs etc.&#xA;They simply require you to have make installed, and to have a Makefile in the current directory.&#xA;Our Makefile looks like this, and is located in the app folder.</description>
+      <description>To run the pipelines/functions we need to use the dagger cli, with a lot of options, for the variable inputs, that each function requires.&#xA;To make this easier, we are utilizing Makefiles.&#xA;Makefiles, is a lot easier, than remembering the correct syntax for a command or a job, and you will often find them in the root, of projects, on Github etc.&#xA;They simply require you to have make installed, and to have a Makefile in the current directory.</description>
     </item>
     <item>
       <title>CI - Setup</title>
       <link>http://localhost:1313/workshop/content/exercises/04-ci-setup/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>http://localhost:1313/workshop/content/exercises/04-ci-setup/</guid>
-      <description>Dagger cli is already installed in your enviroment.&#xA;The pipelines are all defines in the dagger directory under your app directory.&#xA;For this workshop, we won&amp;rsquo;t setup and pipelines etc. We will just use the ones, that are already created.&#xA;Dagger works by creating functions we can call.&#xA;in app/dagger/src/main/__init__.py you will find the functions, written in Python.&#xA;The code looks like this :&#xA;from typing import Annotated import dagger from dagger import Doc, dag, function, object_type @object_type class App: image_url: str = &amp;#34;&amp;#34; @function def build( self, src: Annotated[ dagger.</description>
+      <description>Dagger cli is already installed in your enviroment.&#xA;The pipelines are all defines in the dagger directory under your app directory.&#xA;For this workshop, we won&amp;rsquo;t setup pipelines etc. We will just use the ones, that are already created.&#xA;Dagger works by creating functions we can call.&#xA;in app/dagger/src/main/__init__.py you will find the functions, written in Python.&#xA;The code is written in Python and looks like this :&#xA;from typing import Annotated import dagger from dagger import Doc, dag, function, object_type @object_type class App: image_url: str = &amp;#34;&amp;#34; @function def build( self, src: Annotated[ dagger.</description>
     </item>
     <item>
       <title>Flow</title>
       <link>http://localhost:1313/workshop/content/exercises/01-flow/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>http://localhost:1313/workshop/content/exercises/01-flow/</guid>
-      <description>The flow we will be going thru today, looks like this.&#xA;It&amp;rsquo;s split up, into Continius Integration (CI) and Continius Delivery (CD), with Git in the Center as the &amp;ldquo;Source of truth&amp;rdquo;&#xA;The flow is (normalily) triggered by a commit to Git, that updates the code or container, or deployment configuration.&#xA;Depending on which, a flow will be triggered automatic, that will end up with a new version of the application being deployed.</description>
+      <description>The flow we will be going thru today, looks like this.&#xA;It&amp;rsquo;s split up, into Continuous Integrations (CI) and Continuous Delivery (CD), with Git in the Center as the &amp;ldquo;Source of truth&amp;rdquo;&#xA;The flow is (normalily) triggered by a commit to Git, that updates the code or container, or deployment configuration.&#xA;Depending on which, a flow will be triggered automatic, that will end up with a new version of the application being deployed.</description>
     </item>
     <item>
       <title>Repository</title>
       <link>http://localhost:1313/workshop/content/exercises/02-repository/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>http://localhost:1313/workshop/content/exercises/02-repository/</guid>
-      <description>Since the &amp;ldquo;Source of truth&amp;rdquo; is a Git repository, then we will start by comitting our code, to a new repository.&#xA;We already have all we need in the app folder.&#xA;So all we need is to push this to a Git repository, so we can start working on it.&#xA;This is done, by running the commands below.&#xA;prefix: Run title: Add folder to Git Repository command: | cd app git init git remote add origin http://$GIT_HOST/myapp.</description>
+      <description>Since the &amp;ldquo;Source of truth&amp;rdquo; is a Git repository, we will start by initializing a repo, comitting our code, and pushing it to a new repository.&#xA;We already have all we need in the app folder, so we will use that one.&#xA;This is done, by running the commands below.&#xA;prefix: Run title: Add folder to Git Repository command: | cd ~/exercises/app git init git remote add origin http://$GIT_HOST/myapp.git git add .</description>
+    </item>
+    <item>
+      <title>Scale App</title>
+      <link>http://localhost:1313/workshop/content/exercises/10-scale/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/workshop/content/exercises/10-scale/</guid>
+      <description>In our K8S folder, under App, we have 3 files.&#xA;[~/exercises/app/k8s] $ tree . ├── deployment.yaml ├── ingress.yaml └── service.yaml These 3 files, contain the deployment info, that Kubernetes need, and it&amp;rsquo;s what ArgoCD looks at, for changes.&#xA;Just as we can update our application, and deploy it automatic. We can also update our deployment, and let ArgoCD handle it.&#xA;Let&amp;rsquo;s say we want to have 2 pods running, wíth our application, for failover instead of just one.</description>
     </item>
     <item>
       <title>Temp</title>
       <link>http://localhost:1313/workshop/content/exercises/99-temp/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>http://localhost:1313/workshop/content/exercises/99-temp/</guid>
-      <description>prefix: Open title: Open ArgoCD name: ArgoCD url: http://argocd-educates-cli-w04-s001.192.168.50.243.nip.io prefix: Run title: Get ArgoCD password from secret command: | ARGOCD_PASSWORD=$(kubectl -n argocd get secret argocd-initial-admin-secret -o jsonpath=&amp;#34;{.data.password}&amp;#34; | base64 -d) echo $ARGOCD_PASSWORD k get pods -w -A &amp;lt;ctrl+c&amp;gt; </description>
+      <description>prefix: Open title: Open ArgoCD name: ArgoCD url: http://argocd-educates-cli-w17-s001.192.168.50.243.nip.io prefix: Run title: Get ArgoCD password from secret command: | ARGOCD_PASSWORD=$(kubectl -n argocd get secret argocd-initial-admin-secret -o jsonpath=&amp;#34;{.data.password}&amp;#34; | base64 -d) echo $ARGOCD_PASSWORD k get pods -w -A &amp;lt;ctrl+c&amp;gt; </description>
+    </item>
+    <item>
+      <title>Update App</title>
+      <link>http://localhost:1313/workshop/content/exercises/09-update-app/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/workshop/content/exercises/09-update-app/</guid>
+      <description>Now that we have a working application, let&amp;rsquo;s try to change it a bit, and see the deployment work.&#xA;Start by opening index.html your editor.&#xA;title: Open index.html file: ~/exercises/app/html/index.html On line 18, you should find the following line&#xA;&amp;lt;div class=&amp;#34;container&amp;#34;&amp;gt;&amp;lt;img class=&amp;#34;img-fluid pr-3 aa-logo-img&amp;#34; src=&amp;#34;images/logo.png&amp;#34; alt=&amp;#34;logo&amp;#34;&amp;gt;&amp;lt;a class=&amp;#34;navbar-brand px-0 py-0&amp;#34; href=&amp;#34;#&amp;#34;&amp;gt;Awesome CICD App&amp;lt;/a&amp;gt; Replace awesome with your name, so it says&#xA;&amp;lt;div class=&amp;#34;container&amp;#34;&amp;gt;&amp;lt;img class=&amp;#34;img-fluid pr-3 aa-logo-img&amp;#34; src=&amp;#34;images/logo.png&amp;#34; alt=&amp;#34;logo&amp;#34;&amp;gt;&amp;lt;a class=&amp;#34;navbar-brand px-0 py-0&amp;#34; href=&amp;#34;#&amp;#34;&amp;gt;Robert&amp;#39;s CICD App&amp;lt;/a&amp;gt; Save the file, and open the source control icon, that should now have a 1 on it.</description>
     </item>
     <item>
       <title>Workshop Overview</title>
       <link>http://localhost:1313/workshop/content/exercises/00-workshop-overview/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>http://localhost:1313/workshop/content/exercises/00-workshop-overview/</guid>
-      <description>Welcome to CICD fundamentals&#xA;In this workshop you will learn about&#xA;What is Continius Integrations (CI) What is Continius Delivery (CD) How to use it ? How to automate building applications and delivering them to Kubernetes </description>
+      <description>In this hands-on session, you&amp;rsquo;ll learn how to harness the power of Continuous Integrations (CI) and Continuous Delivery (CD) to:&#xA;Understand the fundamentals of CI/CD and its benefits Master the art of automating your build and deployment processes Learn how to seamlessly integrate your applications with Kubernetes By the end of this workshop, you&amp;rsquo;ll be equipped with the skills to revolutionize your development workflow, reduce errors, and increase efficiency.</description>
     </item>
   </channel>
 </rss>

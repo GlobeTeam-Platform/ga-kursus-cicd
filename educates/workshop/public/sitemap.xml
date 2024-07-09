@@ -24,9 +24,13 @@
   </url><url>
     <loc>http://localhost:1313/workshop/content/exercises/02-repository/</loc>
   </url><url>
+    <loc>http://localhost:1313/workshop/content/exercises/10-scale/</loc>
+  </url><url>
     <loc>http://localhost:1313/workshop/content/tags/</loc>
   </url><url>
     <loc>http://localhost:1313/workshop/content/exercises/99-temp/</loc>
+  </url><url>
+    <loc>http://localhost:1313/workshop/content/exercises/09-update-app/</loc>
   </url><url>
     <loc>http://localhost:1313/workshop/content/exercises/00-workshop-overview/</loc>
   </url>

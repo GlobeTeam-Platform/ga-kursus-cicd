@@ -8,11 +8,11 @@ ArgoCD is one of the major solutions for doing CD.
 
 It's often compared with [Flux](https://fluxcd.io) and both products have a lot of overlapping features.
 
-One of the major reasons for using Argo in this workshop, over Flux, is that ArgoCD has a nice UI, where we can see the changes that we are doing.
+One of the major reasons for using Argo in this workshop, is that ArgoCD has a nice UI, where we can see the changes that we are doing.
 
-ArgoCD is already installed, but to access it, we first need to get a password.
+ArgoCD is already installed, in our Kubernetes cluster, but to access it, we first need to get a password.
 
-The password is generated on deployment.
+The password is generated on deployment, as a Kubernetes secret.
 
 Run the following to get yours.
 

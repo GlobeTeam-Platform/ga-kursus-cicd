@@ -243,15 +243,53 @@
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 <body data-google-tracking-id=''
   data-clarity-tracking-id=''
   data-amplitude-tracking-id='' data-workshop-name='educates-cli--cicd-cf0336d'
-  data-session-namespace='educates-cli-w04-s001' data-workshop-namespace='educates-cli-w04'
+  data-session-namespace='educates-cli-w17-s001' data-workshop-namespace='educates-cli-w17'
   data-training-portal='educates-cli' data-ingress-domain='192.168.50.243.nip.io'
   data-ingress-protocol='http' data-ingress-port-suffix=''
   data-prev-page='exercises/07-argocd' data-current-page='exercises/08-cd-setup'
-  data-next-page='exercises/99-temp' data-page-format='markdown' data-code-fences='chroma'
-  data-page-step='9' data-pages-total='10'>
+  data-next-page='exercises/09-update-app' data-page-format='markdown' data-code-fences='chroma'
+  data-page-step='9' data-pages-total='12'>
 
   
 
@@ -357,7 +395,25 @@
                             
                             
                             <li class="page">
-                                <a href="/workshop/content/exercises/99-temp">10: Temp</a>
+                                <a href="/workshop/content/exercises/09-update-app">10: Update App</a>
+                            </li>
+                            
+                            
+                            
+                            
+                            
+                            
+                            <li class="page">
+                                <a href="/workshop/content/exercises/10-scale">11: Scale App</a>
+                            </li>
+                            
+                            
+                            
+                            
+                            
+                            
+                            <li class="page">
+                                <a href="/workshop/content/exercises/99-temp">12: Temp</a>
                             </li>
                             
                             
@@ -392,7 +448,7 @@
                             data-bs-toggle="modal" data-bs-target="#table-of-contents"><span class="fas fa-list fa-inverse"
                                 aria-hidden="true"></span></button>
                     </form>
-                    <form action="/workshop/content/exercises/99-temp">
+                    <form action="/workshop/content/exercises/09-update-app">
                         <button class="btn btn-transparent" id="header-next-page" type="submit"  aria-label="Next"><span
                                 class="fas fa-arrow-right fa-inverse" aria-hidden="true"></span></button>
                     </form>
@@ -483,7 +539,7 @@ file: ~/exercises/argocd-app.yaml
   kubectl apply -f ~/exercises/argocd-app.yaml
 </code></pre><p>Open the ArgoCD UI, and see a new app has been created.
 <img src="app.png" alt="app"></p>
-<p>If you click on it, then you will see an overview, of all the componments it contains.
+<p>If you click on it, then you will see an overview, of all the componments it contains (deployment, service, ingress).
 <img src="overview.png" alt="overview"></p>
 <p>Depending on your screen resolution, it might be a bit small.</p>
 <p>Use the zoom buttons, to make it fit.</p>
@@ -492,12 +548,12 @@ file: ~/exercises/argocd-app.yaml
 <pre tabindex="0"><code class="language-dashboard:reload-dashboard" data-lang="dashboard:reload-dashboard">prefix: Open
 title: my-awesome-app
 name: my-awesome-app
-url: http://my-awesome-app-educates-cli-w04-s001.192.168.50.243.nip.io
+url: http://my-awesome-app-educates-cli-w17-s001.192.168.50.243.nip.io
 </code></pre>
         </div>
         
         <div class="page-meta clearfix">
-          <form action="/workshop/content/exercises/99-temp">
+          <form action="/workshop/content/exercises/09-update-app">
             <button class="btn btn-lg btn-primary float-end" id="next-page" type="submit" aria-label="continue">
               Continue </button>
           </form>

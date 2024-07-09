@@ -24,3 +24,4 @@ deploy:
 		--image-url=xxx:xxx \
 		--git_password=env:GIT_PASSWORD \
 		--src=.
+	@git pull

@@ -97,7 +97,7 @@ command: |
 Open the ArgoCD UI, and see a new app has been created.
 ![app](app.png)
 
-If you click on it, then you will see an overview, of all the componments it contains.
+If you click on it, then you will see an overview, of all the componments it contains (deployment, service, ingress).
 ![overview](overview.png)
 
 Depending on your screen resolution, it might be a bit small.

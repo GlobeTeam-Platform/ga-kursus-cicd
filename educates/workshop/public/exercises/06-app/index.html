@@ -243,15 +243,53 @@
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 <body data-google-tracking-id=''
   data-clarity-tracking-id=''
   data-amplitude-tracking-id='' data-workshop-name='educates-cli--cicd-cf0336d'
-  data-session-namespace='educates-cli-w04-s001' data-workshop-namespace='educates-cli-w04'
+  data-session-namespace='educates-cli-w17-s001' data-workshop-namespace='educates-cli-w17'
   data-training-portal='educates-cli' data-ingress-domain='192.168.50.243.nip.io'
   data-ingress-protocol='http' data-ingress-port-suffix=''
   data-prev-page='exercises/05-ci-makefile' data-current-page='exercises/06-app'
   data-next-page='exercises/07-argocd' data-page-format='markdown' data-code-fences='chroma'
-  data-page-step='7' data-pages-total='10'>
+  data-page-step='7' data-pages-total='12'>
 
   
 
@@ -357,7 +395,25 @@
                             
                             
                             <li class="page">
-                                <a href="/workshop/content/exercises/99-temp">10: Temp</a>
+                                <a href="/workshop/content/exercises/09-update-app">10: Update App</a>
+                            </li>
+                            
+                            
+                            
+                            
+                            
+                            
+                            <li class="page">
+                                <a href="/workshop/content/exercises/10-scale">11: Scale App</a>
+                            </li>
+                            
+                            
+                            
+                            
+                            
+                            
+                            <li class="page">
+                                <a href="/workshop/content/exercises/99-temp">12: Temp</a>
                             </li>
                             
                             
@@ -426,8 +482,10 @@
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span><span style="color:#ae81ff">COPY ./html /usr/share/nginx/html</span>
 </span></span></code></pre></div><p>And all it does, is to use the Nginx image, and copy the local html folder, to the html folder in the container, so Nginx can publish it.</p>
-<p>We will look at customizing it later.</p>
-<p>But before that, we need to look at how we deploy it.</p>
+<p>This means that the container contains all the files it needs, and can&rsquo;t be modified.</p>
+<p>To make changes, you need to make the changes, in your Git repository, and then run the CI pipeline again, and get a container build.</p>
+<p>This also means, we can easely revert to previus versions.</p>
+<p>In the next step, we will look at how to deploy it.</p>
 
         </div>
         

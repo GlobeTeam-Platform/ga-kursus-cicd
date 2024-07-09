@@ -1,13 +1,12 @@
 ---
 title: "Workshop Overview"
 ---
-Welcome to CICD fundamentals
+In this hands-on session, you'll learn how to harness the power of Continuous Integrations (CI) and Continuous Delivery (CD) to:
 
-In this workshop you will learn about
+- Understand the fundamentals of CI/CD and its benefits
+- Master the art of automating your build and deployment processes
+- Learn how to seamlessly integrate your applications with Kubernetes
 
-- What is Continius Integrations (CI)
-- What is Continius Delivery (CD)
-- How to use it ?
-- How to automate building applications and delivering them to Kubernetes
+By the end of this workshop, you'll be equipped with the skills to revolutionize your development workflow, reduce errors, and increase efficiency.
 
 ![CICD](cicd.svg)

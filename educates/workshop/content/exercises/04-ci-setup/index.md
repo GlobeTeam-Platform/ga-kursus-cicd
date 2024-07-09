@@ -5,13 +5,13 @@ Dagger cli is already installed in your enviroment.
 
 The pipelines are all defines in the `dagger` directory under your `app` directory.
 
-For this workshop, we won't setup and pipelines etc. We will just use the ones, that are already created.
+For this workshop, we won't setup pipelines etc. We will just use the ones, that are already created.
 
 Dagger works by creating functions we can call.
 
 in `app/dagger/src/main/__init__.py` you will find the functions, written in Python.
 
-The code looks like this :
+The code is written in Python and looks like this :
 ```python
 from typing import Annotated
 
@@ -71,7 +71,7 @@ class App:
         return image_url
 ```
 
-There are 3 functions.
+It contains 3 functions.
 
 - build
 

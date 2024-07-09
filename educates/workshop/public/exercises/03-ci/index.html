@@ -243,15 +243,53 @@
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 <body data-google-tracking-id=''
   data-clarity-tracking-id=''
   data-amplitude-tracking-id='' data-workshop-name='educates-cli--cicd-cf0336d'
-  data-session-namespace='educates-cli-w04-s001' data-workshop-namespace='educates-cli-w04'
+  data-session-namespace='educates-cli-w17-s001' data-workshop-namespace='educates-cli-w17'
   data-training-portal='educates-cli' data-ingress-domain='192.168.50.243.nip.io'
   data-ingress-protocol='http' data-ingress-port-suffix=''
   data-prev-page='exercises/02-repository' data-current-page='exercises/03-ci'
   data-next-page='exercises/04-ci-setup' data-page-format='markdown' data-code-fences='chroma'
-  data-page-step='4' data-pages-total='10'>
+  data-page-step='4' data-pages-total='12'>
 
   
 
@@ -357,7 +395,25 @@
                             
                             
                             <li class="page">
-                                <a href="/workshop/content/exercises/99-temp">10: Temp</a>
+                                <a href="/workshop/content/exercises/09-update-app">10: Update App</a>
+                            </li>
+                            
+                            
+                            
+                            
+                            
+                            
+                            <li class="page">
+                                <a href="/workshop/content/exercises/10-scale">11: Scale App</a>
+                            </li>
+                            
+                            
+                            
+                            
+                            
+                            
+                            <li class="page">
+                                <a href="/workshop/content/exercises/99-temp">12: Temp</a>
                             </li>
                             
                             
@@ -425,6 +481,8 @@ For this workshop, we are using <a href="https://dagger.io">Dagger</a> as our CI
 <p>It&rsquo;s big strength is that you can run and test it local and remote, and get the same results.</p>
 <p>This is usefull in our enviroment, where we have some restrictions, compared to a &ldquo;real&rdquo; enviroment.</p>
 <p>We will be using it to build a container from our local Git Repository, and then push this container image, to our registry, and update our deployment manifest, in our remote git repository.</p>
+<p>This i s bit different, from what you would probably do in your own enviroment, where a git commit, to a remote repository, triggers the pipeline.</p>
+<p>In our case, we don&rsquo;t have anything that can trigger this, so we have to do it manual, to start the pipeline, and build the container.</p>
 <p><img src="flow.png" alt="flow"></p>
 <p>Note we have chosen to split up CI and CD, so that Dagger handles CI and ArgoCD handles CD.</p>
 <hr>
@@ -432,6 +490,7 @@ For this workshop, we are using <a href="https://dagger.io">Dagger</a> as our CI
 <ul>
 <li>Benefits of splitting CI/CD up</li>
 <li>Benefits of keeping them togher</li>
+<li>Triggers</li>
 <li>Different tools (Dagger, Jenkins, Argo, Tekton, Github Actions, Gitlab etc.)</li>
 </ul>
 <hr>

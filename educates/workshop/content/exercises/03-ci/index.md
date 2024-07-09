@@ -14,6 +14,10 @@ This is usefull in our enviroment, where we have some restrictions, compared to 
 
 We will be using it to build a container from our local Git Repository, and then push this container image, to our registry, and update our deployment manifest, in our remote git repository.
 
+This i s bit different, from what you would probably do in your own enviroment, where a git commit, to a remote repository, triggers the pipeline. 
+
+In our case, we don't have anything that can trigger this, so we have to do it manual, to start the pipeline, and build the container.
+
 ![flow](flow.png)
 
 Note we have chosen to split up CI and CD, so that Dagger handles CI and ArgoCD handles CD. 
@@ -23,5 +27,6 @@ Note we have chosen to split up CI and CD, so that Dagger handles CI and ArgoCD 
 
 - Benefits of splitting CI/CD up
 - Benefits of keeping them togher
+- Triggers
 - Different tools (Dagger, Jenkins, Argo, Tekton, Github Actions, Gitlab etc.)
 ***

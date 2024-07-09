@@ -1,11 +1,9 @@
 ---
 title: "Repository"
 ---
-Since the "Source of truth" is a Git repository, then we will start by comitting our code, to a new repository.
+Since the "Source of truth" is a Git repository, we will start by initializing a repo, comitting our code, and pushing it to a new repository.
 
-We already have all we need in the `app` folder.
-
-So all we need is to push this to a Git repository, so we can start working on it. 
+We already have all we need in the `app` folder, so we will use that one.
 
 This is done, by running the commands below.
 
@@ -13,7 +11,7 @@ This is done, by running the commands below.
 prefix: Run
 title: Add folder to Git Repository
 command: |
-  cd app
+  cd ~/exercises/app
   git init
   git remote add origin http://$GIT_HOST/myapp.git
   git add .

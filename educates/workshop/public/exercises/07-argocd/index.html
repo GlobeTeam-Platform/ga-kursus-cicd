@@ -243,15 +243,53 @@
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 <body data-google-tracking-id=''
   data-clarity-tracking-id=''
   data-amplitude-tracking-id='' data-workshop-name='educates-cli--cicd-cf0336d'
-  data-session-namespace='educates-cli-w04-s001' data-workshop-namespace='educates-cli-w04'
+  data-session-namespace='educates-cli-w17-s001' data-workshop-namespace='educates-cli-w17'
   data-training-portal='educates-cli' data-ingress-domain='192.168.50.243.nip.io'
   data-ingress-protocol='http' data-ingress-port-suffix=''
   data-prev-page='exercises/06-app' data-current-page='exercises/07-argocd'
   data-next-page='exercises/08-cd-setup' data-page-format='markdown' data-code-fences='chroma'
-  data-page-step='8' data-pages-total='10'>
+  data-page-step='8' data-pages-total='12'>
 
   
 
@@ -357,7 +395,25 @@
                             
                             
                             <li class="page">
-                                <a href="/workshop/content/exercises/99-temp">10: Temp</a>
+                                <a href="/workshop/content/exercises/09-update-app">10: Update App</a>
+                            </li>
+                            
+                            
+                            
+                            
+                            
+                            
+                            <li class="page">
+                                <a href="/workshop/content/exercises/10-scale">11: Scale App</a>
+                            </li>
+                            
+                            
+                            
+                            
+                            
+                            
+                            <li class="page">
+                                <a href="/workshop/content/exercises/99-temp">12: Temp</a>
                             </li>
                             
                             
@@ -422,9 +478,9 @@
 For CD (Continus Deployment) we will be using <a href="https://argoproj.github.io/cd/">ArgoCD</a>.</p>
 <p>ArgoCD is one of the major solutions for doing CD.</p>
 <p>It&rsquo;s often compared with <a href="https://fluxcd.io">Flux</a> and both products have a lot of overlapping features.</p>
-<p>One of the major reasons for using Argo in this workshop, over Flux, is that ArgoCD has a nice UI, where we can see the changes that we are doing.</p>
-<p>ArgoCD is already installed, but to access it, we first need to get a password.</p>
-<p>The password is generated on deployment.</p>
+<p>One of the major reasons for using Argo in this workshop, is that ArgoCD has a nice UI, where we can see the changes that we are doing.</p>
+<p>ArgoCD is already installed, in our Kubernetes cluster, but to access it, we first need to get a password.</p>
+<p>The password is generated on deployment, as a Kubernetes secret.</p>
 <p>Run the following to get yours.</p>
 <pre tabindex="0"><code class="language-terminal:execute" data-lang="terminal:execute">prefix: Run
 title: Get ArgoCD password from secret
@@ -435,7 +491,7 @@ command: |
 <pre tabindex="0"><code class="language-dashboard:reload-dashboard" data-lang="dashboard:reload-dashboard">prefix: Open
 title: Open ArgoCD
 name: ArgoCD
-url: http://argocd-educates-cli-w04-s001.192.168.50.243.nip.io
+url: http://argocd-educates-cli-w17-s001.192.168.50.243.nip.io
 </code></pre><p>Login with username <code>admin</code> and the password you just copied.</p>
 <p>You should now see an UI, that looks like this
 <img src="2.png" alt="UI"></p>
