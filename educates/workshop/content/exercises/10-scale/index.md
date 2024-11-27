@@ -40,3 +40,9 @@ title: my-awesome-app
 name: my-awesome-app
 url: {{< param ingress_protocol >}}://my-awesome-app-{{< param session_name >}}.{{< param ingress_domain >}}
 ```
+```dashboard:reload-dashboard
+prefix: Open
+title: my-awesome-app-http
+name: my-awesome-app-http
+url: http://my-awesome-app-{{< param session_name >}}.{{< param ingress_domain >}}
+```
