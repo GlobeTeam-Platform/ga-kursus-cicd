@@ -14,43 +14,31 @@ layout: about-me
 layout: image
 
 # the image source
-image: /Kubernetes-Logo.wine.png
+image: /cicd.svg
 backgroundSize: 50%
 
 ---
 
-# Kubernetes
+# CICD
 
-Kubernetes, is an open-source platform for managing, automating deployment, scaling, and operating containerized applications across a cluster of worker nodes.
-
----
-layout: image
-image: /kubernetes-cluster-architecture.svg
-backgroundSize: 50em 70%
----
-
-# Cluster Architecture
+CI/CD, which stands for continuous integration and continuous delivery/deployment, aims to streamline and accelerate the software development lifecycle.
 
 ---
 layout: image
-backgroundSize: 80%
+backgroundSize: 90%
+image: /Example-of-CI-CD-pipeline.png
 ---
 
-# Pods
+# Example Pipeline
 
-- A pod (as in a pod of whales or pea pod) is a group of one or more containers
-- Containers within a pod share an IP address and port space, and can find each other via localhost
-- Containers in a Pod also share the same data volumes
-- Pods are considered to be ephemeral
-![pods](/kubernetes-cluster-elements-pods-beginners.png)
 
 ---
 layout: image
-image: /kubernetes-cluster-network.svg
-backgroundSize: 75%
+backgroundSize: 70%
+image: /DevOps-Tools.svg
 ---
 
-# Networking
+# Tools
 
 
 ---
